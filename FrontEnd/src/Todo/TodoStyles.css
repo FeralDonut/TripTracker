@@ -1,0 +1,12 @@
+.todo {
+  border-style: outset;
+  border-width: 3px;
+  border-color: var(--color-main);
+  padding: 10px;
+  margin: 10px 0;
+}
+
+.name {
+  color: var(--color-main);
+  text-decoration: underline;
+}

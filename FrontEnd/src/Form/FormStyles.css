@@ -1,0 +1,23 @@
+.saveButton {
+  color: var(--color-snow);
+  background-color: var(--color-main);
+  border: 1px solid var(--color-main);
+}
+
+.saveButton:disabled {
+  color: var(--color-ash);
+  background-color: var(--color-smoke);
+  border: var(--color-smoke);
+}
+
+
+.deleteButton {
+  color: var(--color-smoke);
+  background-color: var(--color-black);
+  border: var(--color-black);
+}
+.formButtons {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 10px;
+}

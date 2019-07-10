@@ -1,0 +1,83 @@
+:root {
+  --slider-thumb-border: 1px solid var(--color-black);
+  --slider-thumb-height: 16px;
+  --slider-thumb-width: 16px;
+  --slider-thumb-border-radius: 3px;
+  --slider-thumb-cursor: pointer;
+  --slider-thumb-box-shadow: 1px 1px 1px var(--color-black), 0px 0px 1px var(--color-black);
+  --slider-thumb-border-radius: 3px;
+  --slider-thumb-border-margin-top: -5px;
+
+  --slider-track-width: 75%;
+  --slider-track-height: 8.4px;
+  --slider-track-cursor: pointer;
+  --slider-track-box-shadow: 1px 1px 1px var(--color-black), 0px 0px 1px var(--color-black);
+  --slider-track-border: 0.2px solid var(--color-black);
+  --slider-track-border-radius: 1.3px;
+}
+
+/* Hides the slider so that custom slider can be made */
+ .slider {
+  -webkit-appearance: none;
+  width: 75%; /* Specific width is required for Firefox. */
+  background: transparent; 
+}
+
+/* Hides the slider thumb so that custom slider thumb can be made 
+  Thumb is the marker the user moves*/
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+}
+
+.slider[type=range]:focus {
+  outline: none; 
+}
+
+/*Styling for the slider thumb*/
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  border: var(--slider-thumb-border);
+  height: var(--slider-thumb-height);
+  width: var(--slider-thumb-width);
+  border-radius: var(--slider-thumb-border-radius);
+  background: var(--color-main);
+  cursor: var(--slider-thumb-cursor);
+  margin-top: var(--slider-thumb-border-margin-top); /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
+  box-shadow: var(--slider-thumb-box-shadow); /* Add cool effects to your sliders! */
+}
+
+/*Styling for the slider bar*/
+.slider::-webkit-slider-runnable-track {
+  width: var(--slider-track-width);
+  height: var(--slider-track-height);
+  cursor: var(--slider-track-cursor);
+  box-shadow: var(--slider-track-box-shadow);
+  background: var(--color-sliderBG);
+  border-radius: var(--slider-track-border);
+  border: var(--slider-track-border-radius);
+}
+
+
+/**********************
+    FireFox Styling
+**********************/
+.slider::-moz-range-thumb {
+  -webkit-appearance: none;
+  border: var(--slider-thumb-border);
+  height: var(--slider-thumb-height);
+  width: var(--slider-thumb-width);
+  border-radius: var(--slider-thumb-border-radius);
+  background: var(--color-main);
+  cursor: var(--slider-thumb-cursor);
+  box-shadow: var(--slider-thumb-box-shadow); /* Add cool effects to your sliders! */
+}
+
+.slider::-moz-range-track{
+  width: var(--slider-track-width);
+  height: var(--slider-track-height);
+  cursor: var(--slider-track-cursor);
+  box-shadow: var(--slider-track-box-shadow);
+  background: var(--color-sliderBG);
+  border-radius: var(--slider-track-border);
+  border: var(--slider-track-border-radius);
+}
