@@ -1,8 +1,6 @@
 import React, { Fragment } from 'react';
 import { Route, Link, BrowserRouter as Router } from 'react-router-dom'
 import NavBar from './Navbar/navbar';
-import CreateTodo from './CreateTodo/CreateTodoContainter';
-import Todos from './Todo/TodoContainer';
 import styles from './styles.css';
 import Home from './LandingPages/home';
 import MyTrips from './LandingPages/MyTrips';
