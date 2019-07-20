@@ -1,11 +1,23 @@
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: var(--color-snow);
-  font-size: calc(10px + 2vmin);
-  -webkit-box-shadow: 0 8px 6px -6px var(--color-smoke);
-  -moz-box-shadow: 0 8px 6px -6px var(--color-smoke);
-  box-shadow: 0 8px 6px -6px var(--color-smoke);
+.navbar{
+  display: flex;
+  align-content: space-between;
 }
+
+.navbar a{
+  display: block;
+  color: var(--color-main);
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+.navbar a:hover {
+  color: var(--color-snow);
+  background-color: var(--color-main);
+}
+
+/* .link{
+  justify-content: flex-end;
+  align-items: space-between;
+} */

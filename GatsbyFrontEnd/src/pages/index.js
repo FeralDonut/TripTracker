@@ -1,6 +1,8 @@
 import React from "react"
 import { Link } from "gatsby"
 // import { connect } from 'react-redux';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Dashboard from "../components/Dashboard/DashboardContainer";
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -17,15 +19,15 @@ const IndexPage = ({isDarkMode, dispatch}) => (
       className={style.container}
       id="MyApp"
     >
-      <div className={style.tasks}>
+      <Dashboard />
+      {/* <div className={style.tasks}>
         <CreateTodo />
         <TodoList />
-      </div>
+      </div> */}
     </div>
     {/* <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}> */}
       {/* <Image /> */}
     {/* </div> */}
-    <Link to="/page-2/">Go to page 2</Link>
   </Layout>
 )
 

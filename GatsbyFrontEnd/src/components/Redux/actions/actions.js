@@ -26,3 +26,8 @@ export const deleteTodo = id => {
     id
   }
 };
+
+export const setActiveTab = tabName => ({
+  type: 'SET_ACTIVE_TAB',
+  tabName,
+});

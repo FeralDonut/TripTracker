@@ -2,7 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import { StaticQuery, graphql } from "gatsby"
 
-import Header from "./header"
+import NavBar from "./NavBar/NavBar"
 import "./layout.css"
 
 const Layout = ({ children }) => (
@@ -18,7 +18,7 @@ const Layout = ({ children }) => (
     `}
     render={data => (
       <>
-        <Header siteTitle={data.site.siteMetadata.title} />
+        <NavBar siteTitle={data.site.siteMetadata.title} />
         <div
           style={{
             margin: `0 auto`,
@@ -28,11 +28,11 @@ const Layout = ({ children }) => (
           }}
         >
           <main>{children}</main>
-          <footer>
+          {/* <footer>
             © {new Date().getFullYear()}, Built with
             {` `}
             <a href="https://www.gatsbyjs.org">Gatsby</a>
-          </footer>
+          </footer> */}
         </div>
       </>
     )}

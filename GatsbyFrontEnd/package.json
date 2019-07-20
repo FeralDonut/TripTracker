@@ -20,6 +20,7 @@
     "react-dom": "^16.8.2",
     "react-helmet": "^5.2.0",
     "react-redux": "^6.0.1",
+    "reactstrap": "^8.0.1",
     "redux": "^4.0.4",
     "styled-components": "^4.3.2"
   },
@@ -40,5 +41,8 @@
   },
   "bugs": {
     "url": "https://github.com/gatsbyjs/gatsby/issues"
+  },
+  "devDependencies": {
+    "@fortawesome/fontawesome-free": "^5.9.0"
   }
 }

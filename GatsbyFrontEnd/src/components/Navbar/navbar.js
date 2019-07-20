@@ -1,22 +1,34 @@
 import React from 'react';
-import style from './navBarStyles.module.css';
-import Input from '../Inputs/Input'
+import { Link } from "gatsby"
+import PropTypes from "prop-types"
+import styles from './NavBarStyles.module.css';
 
-const NavBar = props => {
-  const {
-    children,
-    className,
-  } = props;
-
-    return (
-    <nav>
-      <ul>
-        <div className={className}>
-          {children}
+const Header = ({ siteTitle }) => (
+  <header>
+      <div className={styles.navbar}>
+        <div className={styles.logo}>
+          <Link to="/">{siteTitle}</Link>
         </div>
-      </ul>
-    </nav>
-  );
+        <div style={{ display: 'flex', justifyContent: 'flex-end'}}>
+          <div className={styles.links}>
+            <Link to="/page-2">My Trips</Link>
+          </div>
+          <div className={styles.links}>
+            <Link to="/plantrip">Plan a Trip</Link>
+        </div>
+        </div>
+      </div>
+
+  </header>
+)
+
+Header.propTypes = {
+  siteTitle: PropTypes.string,
 }
 
-export default NavBar;
+Header.defaultProps = {
+  siteTitle: ``,
+}
+
+export default Header
+
