@@ -1,33 +1,26 @@
 import React from "react"
-import { Link } from "gatsby"
-// import { connect } from 'react-redux';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Dashboard from "../components/Dashboard/DashboardContainer";
-
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-
-import CreateTodo from '../components/CreateTodo/CreateTodoContainter'
-import TodoList from '../components/TodoList/TodoListContainer'
+import { Jumbotron } from 'reactstrap';
 import style from './styles.module.css'
-// import { toggleDarkMode } from '../state/app';
+import user from '../utils/mockData';
+import TripCard from '../components/Trips/TripCard';
 
-const IndexPage = ({isDarkMode, dispatch}) => (
+const IndexPage = () => (
   <Layout>
     <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
     <div
       className={style.container}
       id="MyApp"
     >
-      <Dashboard />
-      {/* <div className={style.tasks}>
-        <CreateTodo />
-        <TodoList />
-      </div> */}
+      <Jumbotron>
+        <h1>TripTracker</h1>
+        <h4>Welcome {user.displayName}!</h4>
+          <p>Use the navigation bar at the top of the page to get started.</p>
+      </Jumbotron>
+      <TripCard />
     </div>
-    {/* <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}> */}
-      {/* <Image /> */}
-    {/* </div> */}
   </Layout>
 )
 
