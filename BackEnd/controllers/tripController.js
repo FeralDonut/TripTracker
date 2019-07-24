@@ -2,13 +2,6 @@ var Trip = require('../models/Trip');
 
 exports.trip_list = function(req, res, next) {
     Trip.find({})
-        .select({
-            _id: 1,
-            title: 1,
-            category: 1,
-            description: 1,
-            icon: 1
-        })
         .then(data => res.json(data))
         .catch(next)
 };
