@@ -1,8 +1,0 @@
-.create_todo {
-  color: var(--color-snow);
-  background-color: var(--color-main);
-  border: var(--color-main);
-  border-radius: 50px;
-  margin: 5px auto;
-  width: 10rem;
-}
