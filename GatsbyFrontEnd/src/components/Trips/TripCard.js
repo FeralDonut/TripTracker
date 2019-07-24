@@ -7,19 +7,19 @@ import {
     CardTitle,
     CardHeader,
 } from 'reactstrap';
-// import './IndividualTeam.css';
+import style from './TripCardStyle.module.css';
 
 const TripCard = props => {
 	return (
 		<Card className='trip-card' key="trip.tripid">
-			<CardHeader>
+			<CardHeader className={style.card_header}>
 				<Alert color={''}>
 					TripName
 				</Alert>
 			</CardHeader>
 			<CardBody>
-				<CardTitle>TripName</CardTitle>
 				<CardText>
+					<span className={style.date_container}>
 					<span>
 						<label>Trip.Start.Date</label>
 						{'Start Date'}
@@ -28,6 +28,7 @@ const TripCard = props => {
 						<label>Trip.End.Date</label>
 						{'End Date'}
 					</span>
+				</span>
 				</CardText>
 				<CardText>
 					<span className="nextokrs-individualteam-teammembers" >

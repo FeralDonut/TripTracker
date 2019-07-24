@@ -2,8 +2,26 @@
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+  margin: 0 15px;
 }
 
-.jumbo-container {
+.jumbo_container {
   display: flex;
+  flex-direction: column;
+  max-width: 75%;
+  padding: 25px 0;
+  background-color:var(--color-jumbo);
+  padding: 20px 20px;
+}
+
+.welcome_container {
+  display: flex; 
+  justify-content: space-between;
+}
+
+.gretting {
+  display: flex;
+}
+.icon {
+
 }

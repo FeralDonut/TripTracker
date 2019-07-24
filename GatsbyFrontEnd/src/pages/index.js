@@ -19,11 +19,15 @@ const IndexPage = () => (
       className={style.container}
       id="MyApp"
     >
-      <Jumbotron>
-        <div className="jumbo-container">
-        <h1>TripTracker</h1>
-        <h4 className="welcome">Welcome {user.displayName}!</h4>
-        <FontAwesomeIcon icon={faUserAstronaut} className="user-icon"/>
+    <Jumbotron className={style.jumbo_container}>
+        <div className={style.welcome_container}>
+          <div className={style.greeting}>
+            <h1>TripTracker</h1>
+            <h4 className="welcome">Welcome {user.displayName}!</h4>
+          </div>
+          <div className={style.icon}>
+            <FontAwesomeIcon icon={faUserAstronaut} size="5x"/>
+          </div>
         </div>
           <p>Use the navigation bar at the top of the page to get started.</p>
       </Jumbotron>
