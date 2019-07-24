@@ -25,8 +25,8 @@ const IndexPage = () => (
             <h1>TripTracker</h1>
             <h4 className="welcome">Welcome {user.displayName}!</h4>
           </div>
-          <div className={style.icon}>
-            <FontAwesomeIcon icon={faUserAstronaut} size="5x"/>
+          <div >
+            <FontAwesomeIcon icon={faUserAstronaut} size="7x" className={style.icon}/>
           </div>
         </div>
           <p>Use the navigation bar at the top of the page to get started.</p>
