@@ -3,9 +3,15 @@ const Schema = mongoose.Schema;
 
 //create schema for todo
 const TodoSchema = new Schema({
-    action: {
+    title: {
         type: String,
         required: [true, 'The todo text field is required']
+    },
+    description: {
+        type: String,
+    },
+    related_item : {
+        type: mongoose.Schema.Types.ObjectId,
     },
     completed: {
         type: Boolean,
@@ -19,7 +25,5 @@ const TodoSchema = new Schema({
     }
 }, {timestamps: true});
 
-//create model for todo
-const Todo = mongoose.model('todo', TodoSchema);
 
-module.exports = Todo;
+const User = mongoose.model('Todo', TodoSchema);

@@ -1,0 +1,136 @@
+{
+  "user": {
+    "id": 5,
+    "emai": "lucke.pirate@gmail.com",
+    "password": "WeWilLImplementPasswordsLater",
+    "firstName": "Craig",
+    "lastName": "Ricker",
+    "datedAdded": "DateTime",
+    "dateModified": "DateTime",
+    "Trips": [
+      "ObjectID1",
+      "ObjectID2",
+      "ObjectID3"
+    ]
+  },
+  "trip": {
+    "id": 10,
+    "blog": "ObjectID - Blog #27",
+    "Locations": [{
+      "Country": "USA",
+      "City": "Denver"
+    }],
+    "startDate": "January 1, 2020",
+    "EndDate": "January 7, 2020",
+    "packingList": [
+      {
+        "item": "ObjectID - T shirt",
+        "count": 5,
+        "packed?" : false
+      },
+      {
+        "item": "ObjectID - pants",
+        "count": 2,
+        "Packed": true
+      }
+    ],
+    "todo": [
+      {
+        "title": "Get drunkkkk",
+        "whatTodo": "OBject ID = restaurant",
+        "completed": false,
+        "datedAdded": "DateTime",
+        "dateModified": "DateTime"
+      }
+    ],
+    "datedAdded": "DateTime",
+    "dateModified": "DateTime"
+  },
+
+//  "packable": {
+//    "id": 30,
+//    "category":"clothing",
+//    "title": "T-Shirt",
+//    "description": "Run of the mill t-shirt.",
+//    "icon": "link to icon image",
+//    "datedAdded": "DateTime",
+//    "dateModified": "DateTime"
+//  },
+
+  "restaurant": {
+    "id": 19,
+    "name": "Mel's and Faye's Diner",
+    "genre": "American",
+    "photos": [],,
+    "address" : {
+      "line1" : "132 Terry Place",
+      "line2" : null,
+      "City": "Jackson",
+      "State": "California",
+      "Country": "USA",
+      "ZipCode": "95642"
+    }
+  },
+//  "blog_post": {
+//    "id": 74,
+//    "Title": "It hurts when I pee...",
+//    "Body": "Anyone have any advice on finding a doctor in a foreign country, and/or travel insurance?",
+//    "photos": ["link to image on AWS"],
+//    "datedAdded": "DateTime",
+//    "dateModified": "DateTime"
+//  },
+
+  "attraction": {
+    "id": 97,
+    "name": "World's Largest Rubber Band Ball",
+    "genre": "World Record",
+    "address" : {
+      "line1" : "132 Terry Place",
+      "line2" : null,
+      "City": "Jackson",
+      "State": "California",
+      "Country": "USA",
+      "ZipCode": "95642"
+    },
+    "datedAdded": "DateTime",
+    "dateModified": "DateTime"
+  }
+}
+
+
+
+
+
+// Example of how to send data TO a restaurant, with photos and an address
+/*
+{
+	"name": "Mel & Fayes Diner",
+	"category": "American",
+	"description": "Small town diner, with delicious food",
+	"address" : {
+		"line1": "This is line 1",
+		"city": "Jackson",
+		"region": "California",
+		"zip": "95652",
+		"country": "USA",
+		"gps" : {
+			"type": "Point",
+			"coordinates": [38.348130, -120.775286]
+		}
+	},
+	"photos": [
+		{
+			"path":"https://s3-media4.fl.yelpcdn.com/bphoto/75uAqFiVtDaMYyxNBc-kZg/o.jpg" ,
+			"caption": "We support football"
+		},
+				{
+			"path":"https://s3-media2.fl.yelpcdn.com/bphoto/KAP9_ZK_-A9zOJ4yngqcsg/o.jpg" ,
+			"caption": "Serving food even in the snow!"
+		}
+		]
+}
+*/
+
+
+
+

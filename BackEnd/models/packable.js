@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 var uniqueValidator = require('mongoose-unique-validator');
+const PhotoModel = require('./photo');
 
 // Model to represent what can be packed
 const PackableSchema = new Schema({
@@ -9,15 +10,17 @@ const PackableSchema = new Schema({
         index: true,
         required: [true, 'All items need a title!']
     },
+    category: {
+        type: String,
+        required: true
+    },
     description: {
         type: String,
     },
-    icon: {
-        type: String,
-    }
+    icon: PhotoModel.PhotoSchema
 }, {timestamps: true});
 
-//create model for todo
-const Packable = mongoose.model('packable', PackableSchema);
+//create model for packable
+const Packable = mongoose.model('Packable', PackableSchema);
 
 module.exports = Packable;

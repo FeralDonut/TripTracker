@@ -26,13 +26,11 @@ const UserSchema = new Schema({
         required: [true, "Everyone has a name!"],
         match: [/^[a-zA-Z0-9]+$/, 'is invalid']
     },
-    // birthday: {
-    //     type: Date,
-    //     required: [true, "Everyone has a birthday!"],
-    // }
+    trips: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Trip',
+    }]
 }, {timestamps: true});
 
 //create model for todo
-const User = mongoose.model('user', UserSchema);
-
-module.exports = User;
+const User = mongoose.model('User', UserSchema);

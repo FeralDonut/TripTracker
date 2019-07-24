@@ -2,10 +2,12 @@ const express = require ('express');
 const router = express.Router();
 const User = require('../models/user');
 const Todo = require('../models/todo');
+const PhotoModel = require('../models/photo');
+const restaurant_controller = require('../controllers/restaurantController');
 
-
-
-// User routes
+/**
+ * Routes for a User
+ */
 router.get('/users', (req, res, next) => {
     User.find({}, ['email', 'firstName', 'lastName'])
         .then(data => res.json(data))
@@ -31,7 +33,9 @@ router.delete('/users/:id', (req, res, next) => {
 });
 
 
-// Todo routes
+/**
+ * Routes for a todo
+ */
 router.get('/todos', (req, res, next) => {
 
     //this will return all the data, exposing only the id and action field to the client
@@ -55,6 +59,14 @@ router.delete('/todos/:id', (req, res, next) => {
         .then(data => res.json(data))
         .catch(next)
 })
+
+
+/**
+ * Routes for restaurants
+ */
+router.get('/restaurants', restaurant_controller.restaurant_list);
+router.get('/restaurants/:id', restaurant_controller.restaurant_detail);
+router.post('/restaurants', restaurant_controller.restaurant_create_post);
 
 
 
