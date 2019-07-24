@@ -6,7 +6,6 @@ const GeoPoint = require('./geo_point');
 const AddressSchema = new Schema({
     line1: {
         type: String,
-        required: [true, 'First line of an address is required']
     },
     line2: {
         type: String,

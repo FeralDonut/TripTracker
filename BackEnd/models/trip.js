@@ -2,25 +2,35 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 var uniqueValidator = require('mongoose-unique-validator');
 const PhotoModel = require('./photo');
-const AddressSchema = require('./address');
-const PostSchema = require('./post');
+const Address = require('./address');
+const PostModel = require('./post');
 const PackableSchema = require('./packable');
 const TodoSchema = require('./todo');
 
 
 //create schema for trip
 const TripSchema = new Schema({
-    blog : [PostSchema.PostSchema],
+    title: {
+        type: String,
+        required: true
+    },
+    description: {
+        type: String,
+        required: false
+    },
+    blog : [PostModel.schema],
     start_date : Date,
     end_date: Date,
     locations : [{
-        address: AddressSchema.AddressSchema,
+        address: {
+            type: Address.schema,
+        },
         start_date: {
-            type: date,
+            type: Date,
             required:true
         },
         end_date: {
-            type: date,
+            type: Date,
             required: true
         }
     }],
@@ -94,5 +104,5 @@ const TripSchema = new Schema({
     photos: [PhotoModel.schema]
 }, {timestamps: true});
 
-const Trip = mongoose.model('trip', TripSchema);
+module.exports = mongoose.model("Trip", TripSchema);
 

@@ -17,7 +17,7 @@ const PackableSchema = new Schema({
     description: {
         type: String,
     },
-    icon: PhotoModel.PhotoSchema
+    icon: PhotoModel.schema
 }, {timestamps: true});
 
 //create model for packable

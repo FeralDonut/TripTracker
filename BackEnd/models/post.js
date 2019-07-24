@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-var uniqueValidator = require('mongoose-unique-validator');
 const PhotoModel = require('./photo');
 
 //create schema for blogPost
@@ -28,4 +27,4 @@ const PostSchema = new Schema({
 }, {timestamps: true});
 
 
-module.exports = PostSchema;
+module.exports = mongoose.model("Post", PostSchema);
