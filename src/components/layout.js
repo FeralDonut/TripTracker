@@ -1,8 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { StaticQuery, graphql } from "gatsby"
-
-import NavBar from "./NavBar/NavBar"
+import NavBar from "./Navbar/NavBar"
 import "./layout.css"
 
 const Layout = ({ children }) => (
