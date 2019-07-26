@@ -5,10 +5,7 @@ import {Nav, NavItem, NavLink, TabContent, TabPane } from 'reactstrap';
 // import './Dashboard.css';
 import CreateTodo from '../CreateTodo/CreateTodoContainter';
 import TodoList from '../TodoList/TodoListContainer';
-<<<<<<< Updated upstream
-=======
 
->>>>>>> Stashed changes
 const Dashboard = props => {
   const { activeTab, setActiveTab } = props;
 
