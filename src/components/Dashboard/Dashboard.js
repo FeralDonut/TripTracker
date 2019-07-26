@@ -4,6 +4,7 @@ import React, {Fragment} from 'react';
 import {Nav, NavItem, NavLink, TabContent, TabPane } from 'reactstrap';
 // import './Dashboard.css';
 import CreateTodo from '../CreateTodo/CreateTodoContainter';
+import TodoList from '../TodoList/TodoListContainer';
 const Dashboard = props => {
   const { activeTab, setActiveTab } = props;
 
@@ -41,7 +42,8 @@ const Dashboard = props => {
               <Nav tabs>{tabRouting}</Nav>
               <TabContent activeTab={activeTab}>
                 <TabPane tabId="attractions">
-                  Things to do
+                  <TodoList />
+                  <CreateTodo />
                 </TabPane>
                 <TabPane tabId="journal">
                   Journal

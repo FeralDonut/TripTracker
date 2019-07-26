@@ -11,10 +11,10 @@ const Header = ({ siteTitle }) => (
         </div>
         <div style={{ display: 'flex', justifyContent: 'flex-end'}}>
           <div className={styles.links}>
-            <Link to="/page-2">My Trips</Link>
+            <Link to="/mytrips">My Trips</Link>
           </div>
           <div className={styles.links}>
-            <Link to="/plantrip">Plan a Trip</Link>
+            <Link to="/planatrip">Plan a Trip</Link>
         </div>
         </div>
       </div>
