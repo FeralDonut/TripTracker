@@ -3,7 +3,6 @@ import style from './TodoStyles.module.css';
 
 const Todo = props => {
   const { 
-    name,
     description,
     todos
   } = props;
@@ -13,9 +12,6 @@ const Todo = props => {
       {
         todos.length > 0 ?
         <div className={style.todo}>
-          <h1 className={style.name}>
-            {name}
-          </h1>
           <p>{description}</p>
         </div> : null
       }

@@ -4,7 +4,6 @@ import CreateTodoForm from './CreateTodoForm';
 
 const mapStateToProps = state => ({
   id: state.pendingTodo.id,
-  name: state.pendingTodo.name,
   description: state.pendingTodo.description,
 });
 
