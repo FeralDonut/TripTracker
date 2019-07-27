@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import style from './TodoStyles.module.css';
 
 const Todo = props => {
+  console.log(props.description)
   const { 
     description,
     todos
@@ -11,7 +12,7 @@ const Todo = props => {
     <Fragment>
       {
         todos.length > 0 ?
-        <div className={style.todo}>
+        <div >
           <p>{description}</p>
         </div> : null
       }

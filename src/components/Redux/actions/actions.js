@@ -11,7 +11,7 @@ export const editPendingTodo = todo => ({
   todo,
 });
 
-export const publishTodo= (id, name, description) => {
+export const publishTodo= (id, description) => {
   return {
     type: 'PUBLISH_TODO',
     id,
