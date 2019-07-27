@@ -18,6 +18,16 @@ const TripCard = props => {
 				</Alert>
 			</CardHeader>
 			<CardBody>
+			<CardText className={style.location_container}>
+					<span className={style.city}>
+						<label>Location.city</label>
+						{"City"}
+					</span>
+					<span className={style.country}>
+						<label>Location.Country</label>
+						{'Country'}
+					</span>
+				</CardText>
 				<CardText>
 					<span className={style.date_container}>
 					<span>
@@ -29,16 +39,6 @@ const TripCard = props => {
 						{'End Date'}
 					</span>
 				</span>
-				</CardText>
-				<CardText>
-					<span className="nextokrs-individualteam-teammembers" >
-						<label>Location.city</label>
-						{"City"}
-					</span>
-					<span>
-						<label>Location.Country</label>
-						{'Country'}
-					</span>
 				</CardText>
 			</CardBody>
 		</Card>

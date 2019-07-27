@@ -5,8 +5,3 @@
   padding: 10px;
   margin: 10px 0;
 }
-
-.name {
-  color: var(--color-main);
-  text-decoration: underline;
-}

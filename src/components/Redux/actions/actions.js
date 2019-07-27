@@ -15,7 +15,6 @@ export const publishTodo= (id, name, description) => {
   return {
     type: 'PUBLISH_TODO',
     id,
-    name,
     description,
   }
 };

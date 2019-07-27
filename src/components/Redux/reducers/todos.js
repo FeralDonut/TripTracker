@@ -5,7 +5,6 @@ export default (state=[], action) => {
         ...state,
         {
           id: action.id,
-          name: action.name,
           description: action.description,
         }
       ];

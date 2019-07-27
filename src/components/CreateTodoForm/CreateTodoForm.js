@@ -6,7 +6,6 @@ import Input from '../Inputs/Input';
 const CreateTodoForm = props => {
   const { 
     id,
-    name,
     description,
     editPendingTodo,
     publishTodo, 
@@ -14,6 +13,7 @@ const CreateTodoForm = props => {
   } = props;
 
   const handleChange = (event) => {
+    console.log(event.target.name, event.target.value, id )
     editPendingTodo({ [event.target.name]: event.target.value, id });
   };
   const createSave = (e) => {
@@ -25,7 +25,7 @@ const CreateTodoForm = props => {
     //   },
     //   body: JSON.stringify({name, description})
     // }).then(res => {
-      publishTodo(id, name, description);
+      publishTodo(id, description);
     // })
     
   };
@@ -38,15 +38,8 @@ const CreateTodoForm = props => {
       legend="Add to your To Do List"
       handleSave={createSave}
       handleDelete={handleDelete}
-      disabled={!name || !description}
+      disabled={!description}
     >
-      <Input
-        name="name"
-        type="text"
-        placeholder="name"
-        id="name"
-        onChange={e => handleChange(e)} 
-      />
       <Input
         name="description"
         type="text"
