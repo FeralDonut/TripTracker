@@ -15,6 +15,7 @@ const Dashboard = props => {
 
   const tabLinks = [
     {tabName: 'attractions', tabText: 'Things To Do'},
+    {tabName: 'eateries', tabText: 'Places To Eat'},
     {tabName: 'journal', tabText: 'Journal'},
     {tabName: 'info', tabText: 'Important Info'},
     {tabName: 'packing', tabText: 'Packing List'},
@@ -45,6 +46,9 @@ const Dashboard = props => {
                 <TabPane tabId="attractions">
                   <TodoList />
                   <CreateTodo />
+                </TabPane>
+                <TabPane tabId="eateries">
+                  Yum
                 </TabPane>
                 <TabPane tabId="journal">
                   Journal

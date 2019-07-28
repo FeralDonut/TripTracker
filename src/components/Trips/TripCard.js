@@ -4,7 +4,6 @@ import {
     Card,
     CardText,
     CardBody,
-    CardTitle,
     CardHeader,
 } from 'reactstrap';
 import style from './TripCardStyle.module.css';
