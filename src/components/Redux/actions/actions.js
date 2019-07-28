@@ -1,3 +1,8 @@
+/*****************
+ * 
+ * TodoList Actions
+ * 
+ ******************/
 export const addTodo = () => {
   const id = Math.random();
   return {
@@ -26,7 +31,42 @@ export const deleteTodo = id => {
   }
 };
 
+/*****************
+ * 
+ * EateriesList Actions
+ * 
+ ******************/
+export const addEatery = () => {
+  const id = Math.random();
+  return {
+  type: 'ADD_EATERY',
+  id
+  }
+};
+
+export const editPendingEatery = eatery => ({
+  type: 'EDIT_PENDING_EATERY',
+  eatery,
+});
+
+export const publishEatery= (id, description) => {
+  return {
+    type: 'PUBLISH_EATERY',
+    id,
+    description,
+  }
+};
+
+export const deleteEatery = id => {
+  return {
+    type: 'DELETE_EATERY',
+    id
+  }
+};
+
+
 export const setActiveTab = tabName => ({
   type: 'SET_ACTIVE_TAB',
   tabName,
 });
+

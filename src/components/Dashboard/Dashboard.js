@@ -1,10 +1,9 @@
 import React, {Fragment} from 'react';
-// import useFetchData from '../../hooks/useFetchData';
-// import useStore from '../../store/store';
 import {Nav, NavItem, NavLink, TabContent, TabPane } from 'reactstrap';
-// import './Dashboard.css';
 import CreateTodo from '../CreateTodo/CreateTodoContainter';
 import TodoList from '../TodoList/TodoListContainer';
+import CreateEatery from '../Eateries/CreateEatery/CreateEateryContainter'; 
+import EateriesList from '../Eateries/EateriesList/EateriesListContainer';
 
 const Dashboard = props => {
   const { activeTab, setActiveTab } = props;
@@ -48,7 +47,8 @@ const Dashboard = props => {
                   <CreateTodo />
                 </TabPane>
                 <TabPane tabId="eateries">
-                  Yum
+                  <EateriesList />
+                  <CreateEatery />
                 </TabPane>
                 <TabPane tabId="journal">
                   Journal
