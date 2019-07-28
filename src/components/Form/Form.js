@@ -21,7 +21,7 @@ const Form = props => {
             text="Save"
             className={style.saveButton}
             onClick={handleSave}
-            // disabled={disabled}
+            disabled={disabled}
           />
           <Button
             text="Delete"
