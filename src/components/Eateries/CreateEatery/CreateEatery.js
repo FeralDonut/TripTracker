@@ -3,7 +3,7 @@ import CreateEateryForm from '../CreateEateryForm/CreateEateryFormContainer';
 import Button from '../../Buttons/Button';
 import style from './CreateEateryStyles.module.css';
 
-const CreateTodo = props => {
+const CreateEatery = props => {
   const { id , addEatery} = props;
 
   return (
@@ -20,4 +20,4 @@ const CreateTodo = props => {
   );
 };
 
-export default CreateTodo;
+export default CreateEatery;

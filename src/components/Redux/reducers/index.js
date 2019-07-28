@@ -4,6 +4,8 @@ import pendingTodo from './pendingTodo';
 import todos from './todos';
 import pendingEatery from './pendingEatery';
 import eateries from './eateries';
+import packingItems from './packingItems';
+import pendingPackingList from './pendingPackingList';
 
 export default combineReducers({
   dashboardTab,
@@ -11,4 +13,6 @@ export default combineReducers({
   todos,
   pendingEatery,
   eateries,
+  pendingPackingList,
+  packingItems,
 });
