@@ -4,6 +4,8 @@ import CreateTodo from '../CreateTodo/CreateTodoContainter';
 import TodoList from '../TodoList/TodoListContainer';
 import CreateEatery from '../Eateries/CreateEatery/CreateEateryContainter'; 
 import EateriesList from '../Eateries/EateriesList/EateriesListContainer';
+import CreatePackingList from '../PackingList/CreatePackingList/CreatePackingListContainter';
+import PackingList from '../PackingList/PackingList/PackingListContainer';
 
 const Dashboard = props => {
   const { activeTab, setActiveTab } = props;
@@ -57,7 +59,8 @@ const Dashboard = props => {
                   Important Information
                 </TabPane>
                 <TabPane tabId="packing">
-                  Packing List
+                  <PackingList />
+                  <CreatePackingList />
                 </TabPane>
               </TabContent>
             {/* </div> */}

@@ -65,6 +65,39 @@ export const deleteEatery = id => {
 };
 
 
+/*****************
+ * 
+ * Packing List Actions
+ * 
+ ******************/
+export const addPackingList = () => {
+  const id = Math.random();
+  return {
+  type: 'ADD_PACKING_LIST',
+  id
+  }
+};
+
+export const editPendingPackingList = packingItems => ({
+  type: 'EDIT_PENDING_PACKING_LIST',
+  packingItems,
+});
+
+export const publishPackingList= (id, description) => {
+  return {
+    type: 'PUBLISH_PACKING_LIST',
+    id,
+    description,
+  }
+};
+
+export const deleteItem = id => {
+  return {
+    type: 'DELETE_PACKING_LIST',
+    id
+  }
+};
+
 export const setActiveTab = tabName => ({
   type: 'SET_ACTIVE_TAB',
   tabName,
