@@ -82,8 +82,8 @@ router.post('/packables', packable_controller.packable_create);
  * Routes for trips
  */
 router.get('/trips', trip_controller.trip_list);
-router.get('/trips/:id', trip_controller.trip_detail);
+router.get('/trips/:trip_id', trip_controller.trip_detail);
 router.post('/trips', trip_controller.trip_create);
-
+// router.get('/trips/')
 
 module.exports = router;

@@ -1,6 +1,6 @@
 var Trip = require('../models/trip');
 
-exports.trip_list = function(req, res, next) {
+exports.packing_list_list = function(req, res, next) {
     Trip.find({})
         .then(data => res.json(data))
         .catch(next)
@@ -19,9 +19,7 @@ exports.trip_create = function(req, res, next){
 };
 
 exports.trip_detail = function(req, res, next) {
-    Trip.findById(req.params.trip_id)
+    Trip.findById(req.params.id)
         .then(data => res.json(data))
         .catch(next)
 };
-
-
