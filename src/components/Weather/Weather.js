@@ -21,18 +21,12 @@ const WeatherAPI = () => {
         setDailyData(dailyData)
     })
     }, [])
-    console.log("DAILYDATA", dailyData)
-    console.log("FULLDATA",fullData)
 
     return (
       <div className="container">
-      <h1 className="display-1 jumbotron">5-Day Forecast.</h1>
-      <h5 className="display-5 text-muted">New York, US</h5>
-        <div className="row justify-content-center">
-        {(dailyData)? (dailyData.map((reading, index) => <WeatherCard reading={reading} key={index} />)) : <div>no weather</div>}
-        {/* <div>{fullData}</div>
-        <div>{dailyData}</div> */}
-      </div>
+          <div className="row justify-content-center">
+          {(dailyData)? (dailyData.map((reading, index) => <WeatherCard reading={reading} key={index} />)) : <div>no weather</div>}
+          </div>
       </div>
     )
 }
