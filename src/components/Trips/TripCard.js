@@ -6,14 +6,24 @@ import {
     CardBody,
     CardHeader,
 } from 'reactstrap';
+import moment from 'moment';
 import style from './TripCardStyle.module.css';
 
 const TripCard = props => {
+	const {
+		key,
+		id,
+		title,
+		startDate,
+		endDate,
+		description,
+	} = props
+
 	return (
 		<Card className='trip-card' key="trip.tripid">
 			<CardHeader className={style.card_header}>
 				<Alert color={''}>
-					TripName
+					{title}
 				</Alert>
 			</CardHeader>
 			<CardBody>
@@ -30,11 +40,11 @@ const TripCard = props => {
 				<CardText>
 					<span className={style.date_container}>
 					<span>
-						<label>Trip.Start.Date</label>
+						<label>{moment(startDate).format("MMM Do YYYY")}</label>
 						{'Start Date'}
 					</span>
 					<span>
-						<label>Trip.End.Date</label>
+						<label>{moment(endDate).format("MMM Do YYYY")}</label>
 						{'End Date'}
 					</span>
 				</span>
