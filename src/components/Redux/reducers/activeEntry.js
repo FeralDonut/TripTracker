@@ -6,6 +6,8 @@ export default (state = '', action) => {
       return '';
     case 'SELECT_ENTRY':
       return action.id
+    case 'UPDATE_ENTRY':
+      return '';
     case 'DESELECT_ENTRY':
       return '';
     default:

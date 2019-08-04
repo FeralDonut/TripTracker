@@ -3,7 +3,7 @@ import { selectEntry, deleteEntry, deselectEntry } from '../Redux/actions/action
 import journalEntry from './journalEntry';
 
 const mapStateToProps = state => ({
- activeEntry: state.activeEntry,
+  activeEntry: state.activeEntry,
 });
 
 const mapDispatchToProps = {

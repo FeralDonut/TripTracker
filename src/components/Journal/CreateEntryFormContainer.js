@@ -4,6 +4,7 @@ import CreateEntryForm from './CreateEntryForm';
 
 const mapStateToProps = state => ({
   id: state.pendingEntry.id,
+  title: state.pendingEntry.title,
   description: state.pendingEntry.description,
 });
 

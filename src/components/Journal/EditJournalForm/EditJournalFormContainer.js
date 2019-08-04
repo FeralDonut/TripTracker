@@ -3,7 +3,7 @@ import { deleteEntry, editEntry, updateEntry, deselectEntry } from '../../Redux/
 import EditJournalForm from './EditJournalForm';
 
 const mapStateToProps = state => ({
-  editActiveENtry: state.editActiveEntry,
+  editActiveEntry: state.editActiveEntry,
 });
 
 const mapDispatchToProps = {

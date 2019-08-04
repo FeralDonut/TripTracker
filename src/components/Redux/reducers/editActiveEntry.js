@@ -3,12 +3,16 @@ export default (state = {}, action) => {
     case 'SELECT_ENTRY':
     return {
       id: action.id,
-      decription: action.description,
+      title: action.title,
+      date: action.date,
+      description: action.description,
     }
     case 'EDIT_ACTIVE_ENTRY':
       return {
-        id: action.task.id,
-        title: action.task.description !== undefined ? (action.task.description) : (state.description),
+        id: action.journalEntry.id,
+        title: action.journalEntry.title !== undefined ? (action.journalEntry.title) : (state.title),
+        date: action.journalEntry.date !== undefined ? (action.journalEntry.date) : (state.date),
+        description: action.journalEntry.description !== undefined ? (action.journalEntry.description) : (state.description),
       };
     default:
       return state;

@@ -116,13 +116,20 @@ export const editPendingEntry = journalEntry => ({
   journalEntry,
 });
 
-export const publishEntry= (id, description) => {
+export const publishEntry= (id, title, date, description) => {
   return {
     type: 'PUBLISH_ENTRY',
     id,
+    title,
+    date,
     description,
   }
 };
+
+export const editEntry = journalEntry => ({
+  type: 'EDIT_ACTIVE_ENTRY',
+  journalEntry,
+});
 
 export const deleteEntry = id => {
   return {
@@ -131,18 +138,22 @@ export const deleteEntry = id => {
   }
 };
 
-export const updateEntry = (id, description) => {
+export const updateEntry = (id, title, date, description) => {
   return {
-    type: 'UPDATE_TASK',
+    type: 'UPDATE_ENTRY',
     id,
+    title,
+    date,
     description,
   }
 };
 
-export const selectEntry = (id, description) => {
+export const selectEntry = (id, title, date, description) => {
   return {
     type: "SELECT_ENTRY",
     id,
+    title, 
+    date,
     description,
   }
 };

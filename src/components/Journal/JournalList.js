@@ -8,6 +8,8 @@ const JournalList = (props) => {
     <JournalEntry
       key={entry.id}
       id={entry.id}
+      title={entry.title}
+      date={entry.date}
       description={entry.description}
     />    
   ));

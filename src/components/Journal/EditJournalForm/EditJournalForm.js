@@ -1,6 +1,7 @@
 import React from 'react';
 import style from './EditJournalFormStyles.module.css';
 import Form from '../../Form/Form';
+import Input from '../../Inputs/Input';
 
 const EditTaskForm = (props) => {
   const {
@@ -12,12 +13,14 @@ const EditTaskForm = (props) => {
   } = props;
   const {
     id,
+    title,
+    date,
     description
   } = editActiveEntry;
- 
+
   const editSave = (e) => {
     e.preventDefault();
-    updateEntry( id, description );
+    updateEntry( id, title, date, description );
   };
 
   const handleDelete = (e) => {
@@ -30,7 +33,7 @@ const EditTaskForm = (props) => {
   };
 
   const handleDeselect = (event) => {
-    if (event.relatedTarget === null ) {
+    if (event.relatedTarget.id === "gatsby-focus-wrapper" ) {
       deselectEntry();
     }
     return;
@@ -47,15 +50,26 @@ const EditTaskForm = (props) => {
         legend="Update Your Entry"
         handleSave={editSave}
         handleDelete={handleDelete}
-        disabled={!description}
       >
+        <Input
+          name="title"
+          type="text"
+          placeholder="Entry Title"
+          id="title"
+          value={title}
+          onChange={e => handleChange(e)} 
+      />
         <textarea
           id="description"
           name="description"
           rows="6"
           cols="75"
+          value={description}
           onChange={e => handleChange(e)} 
-        />
+          autoFocus
+        >
+          
+        </textarea>
       </Form>
     </div>
   );

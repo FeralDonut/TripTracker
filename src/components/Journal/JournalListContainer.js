@@ -5,5 +5,4 @@ const mapStateToProps = state => ({
  journalEntry: state.journalEntry,
 });
 
-
 export default connect(mapStateToProps)(JournalList);
