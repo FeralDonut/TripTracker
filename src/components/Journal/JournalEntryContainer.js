@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { selectEntry, deleteEntry, deselectEntry } from '../Redux/actions/actions';
-import journalEntry from './journalEntry';
+import journalEntry from './JournalEntry';
 
 const mapStateToProps = state => ({
   activeEntry: state.activeEntry,
