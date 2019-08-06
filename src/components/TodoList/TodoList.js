@@ -12,7 +12,6 @@ const TodoList = ({ todos, deleteTodo }) => {
 
   const handleClick = () => {
     setChecked(!checked);
-    console.log("Checkbox is checked = ", checked)
   }
 
   return (

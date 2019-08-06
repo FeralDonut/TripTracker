@@ -6,6 +6,8 @@ import CreateEatery from '../Eateries/CreateEatery/CreateEateryContainter';
 import EateriesList from '../Eateries/EateriesList/EateriesListContainer';
 import CreatePackingList from '../PackingList/CreatePackingList/CreatePackingListContainter';
 import PackingList from '../PackingList/PackingList/PackingListContainer';
+import CreateEntry from '../Journal/CreateEntryContainer';
+import JournalList from '../Journal/JournalListContainer';
 
 const Dashboard = props => {
   const { activeTab, setActiveTab } = props;
@@ -53,7 +55,8 @@ const Dashboard = props => {
                   <CreateEatery />
                 </TabPane>
                 <TabPane tabId="journal">
-                  Journal
+                  <CreateEntry />
+                  <JournalList />
                 </TabPane>
                 <TabPane tabId="info">
                   Important Information

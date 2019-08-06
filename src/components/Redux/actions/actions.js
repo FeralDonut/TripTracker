@@ -98,8 +98,74 @@ export const deleteItem = id => {
   }
 };
 
+/*****************
+ * 
+ * Journal Entry Actions
+ * 
+ ******************/
+export const addJournalEntry = () => {
+  const id = Math.random();
+  return {
+  type: 'ADD_ENTRY',
+  id
+  }
+};
+
+export const editPendingEntry = journalEntry => ({
+  type: 'EDIT_PENDING_ENTRY',
+  journalEntry,
+});
+
+export const publishEntry= (id, title, date, description) => {
+  return {
+    type: 'PUBLISH_ENTRY',
+    id,
+    title,
+    date,
+    description,
+  }
+};
+
+export const editEntry = journalEntry => ({
+  type: 'EDIT_ACTIVE_ENTRY',
+  journalEntry,
+});
+
+export const deleteEntry = id => {
+  return {
+    type: 'DELETE_ENTRY',
+    id
+  }
+};
+
+export const updateEntry = (id, title, date, description) => {
+  return {
+    type: 'UPDATE_ENTRY',
+    id,
+    title,
+    date,
+    description,
+  }
+};
+
+export const selectEntry = (id, title, date, description) => {
+  return {
+    type: "SELECT_ENTRY",
+    id,
+    title, 
+    date,
+    description,
+  }
+};
+export const deselectEntry = () => {
+  return {
+    type: 'DESELECT_ENTRY'
+  }
+};
+
+
+
 export const setActiveTab = tabName => ({
   type: 'SET_ACTIVE_TAB',
   tabName,
 });
-
