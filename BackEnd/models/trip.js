@@ -6,6 +6,7 @@ const Address = require('./address');
 const PostModel = require('./post');
 const PackableSchema = require('./packable');
 const TodoSchema = require('./todo');
+const Location = require('./location');
 
 
 //create schema for trip
@@ -21,19 +22,7 @@ const TripSchema = new Schema({
     blog : [PostModel.schema],
     start_date : Date,
     end_date: Date,
-    locations : [{
-        address: {
-            type: Address.schema,
-        },
-        start_date: {
-            type: Date,
-            required:true
-        },
-        end_date: {
-            type: Date,
-            required: true
-        }
-    }],
+    locations : [Location.schema],
     // accomodations: [{
     //
     // }],

@@ -6,6 +6,8 @@ const PhotoModel = require('../models/photo');
 const restaurant_controller = require('../controllers/restaurantController');
 const packable_controller = require('../controllers/packableController');
 const trip_controller = require('../controllers/tripController');
+const post_controller = require('../controllers/postController');
+const location_controller = require('../controllers/locationController');
 
 
 /**
@@ -82,8 +84,25 @@ router.post('/packables', packable_controller.packable_create);
  * Routes for trips
  */
 router.get('/trips', trip_controller.trip_list);
-router.get('/trips/:trip_id', trip_controller.trip_detail);
 router.post('/trips', trip_controller.trip_create);
+router.get('/trips/:trip_id', trip_controller.trip_detail);
 // router.get('/trips/')
+
+/**
+ * Routes for posts
+ * @type {Router|router}
+ */
+router.post ('/trips/:trip_id/posts', post_controller.post_create);
+router.get('/trips/:trip_id/posts/:post_id', post_controller.post_view);
+router.patch('/trips/:trip_id/posts/:post_id', post_controller.post_update);
+router.delete('/trips/:trip_id/posts/:post_id', post_controller.post_delete);
+
+/**
+ * Routes for locations
+ */
+router.post ('/trips/:trip_id/locations', location_controller.location_create);
+router.get('/trips/:trip_id/locations/:location_id', location_controller.location_view);
+router.patch('/trips/:trip_id/locations/:location_id', location_controller.location_update);
+router.delete('/trips/:trip_id/locations/:location_id', location_controller.location_delete);
 
 module.exports = router;
