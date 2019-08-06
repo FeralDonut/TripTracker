@@ -21,7 +21,6 @@ const CreateEntryForm = (props) => {
   const createSave = (e) => {
     e.preventDefault();
     const date = moment(new Date()).format('MMM DD YYYY')
-console.log("DATE", date)
 
     publishEntry(id, title, date, description);
   };

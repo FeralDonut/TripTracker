@@ -13,7 +13,6 @@ const CreateEateryForm = props => {
   } = props;
 
   const handleChange = (event) => {
-    console.log(event.target.name, event.target.value, id )
     editPendingEatery({ [event.target.name]: event.target.value, id });
   };
   const createSave = (e) => {
