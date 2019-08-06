@@ -11,16 +11,16 @@ import style from './TripCardStyle.module.css';
 
 const TripCard = props => {
 	const {
-		key,
 		id,
 		title,
 		startDate,
 		endDate,
 		description,
+		locations,
 	} = props
 
-	return (
-		<Card className='trip-card' key="trip.tripid">
+return (
+		<Card className='trip-card' key={id}>
 			<CardHeader className={style.card_header}>
 				<Alert color={''}>
 					{title}
@@ -28,24 +28,24 @@ const TripCard = props => {
 			</CardHeader>
 			<CardBody>
 			<CardText className={style.location_container}>
-					<span className={style.city}>
-						<label>Location.city</label>
+					<span className={style.location}>
+						<label>{(locations[0]) ? locations[0].address.city : null}</label>
 						{"City"}
 					</span>
-					<span className={style.country}>
-						<label>Location.Country</label>
-						{'Country'}
+					<span className={style.date}>
+						{'Start Date'}
+						<label>{moment(startDate).format("MMM Do YYYY")}</label>
 					</span>
 				</CardText>
 				<CardText>
 					<span className={style.date_container}>
-					<span>
-						<label>{moment(startDate).format("MMM Do YYYY")}</label>
-						{'Start Date'}
+					<span className={style.location}>
+						<label>{(locations[0]) ? locations[0].address.country : null}</label>
+						{'Country'}
 					</span>
-					<span>
-						<label>{moment(endDate).format("MMM Do YYYY")}</label>
+					<span className={style.date}>
 						{'End Date'}
+						<label>{moment(endDate).format("MMM Do YYYY")}</label>
 					</span>
 				</span>
 				</CardText>

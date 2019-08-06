@@ -7,13 +7,13 @@
   justify-content: space-between;
 }
 
-.city {
+.location {
   display: flex;
   flex-direction: column;
   float: left;
 }
 
-.country {
+.date {
   display: flex;
   flex-direction: column;
 }

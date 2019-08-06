@@ -3,7 +3,6 @@ import TripCard from './TripCard';
 //import style from './JournalListStyles.modules.css';
 
 const TripList = ({trips}) => {
-  console.log("TRIPLIST", trips)
   const myTrips = trips.map(trip =>(
     <TripCard
       key={trip._id}
@@ -12,6 +11,7 @@ const TripList = ({trips}) => {
       startDate={trip.start_date}
       endDate={trip.end_date}
       description={trip.description}
+      locations={trip.locations}
     />    
   ));
   

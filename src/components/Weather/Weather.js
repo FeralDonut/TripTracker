@@ -25,7 +25,10 @@ const WeatherAPI = () => {
     return (
       <div className="container">
           <div className="row justify-content-center">
-          {(dailyData)? (dailyData.map((reading, index) => <WeatherCard reading={reading} key={index} />)) : <div>no weather</div>}
+          {(dailyData)? 
+            (dailyData.map((reading, index) => <WeatherCard reading={reading} key={index} />)) : 
+            (<div>no weather</div>
+            )}
           </div>
       </div>
     )

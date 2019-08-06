@@ -19,8 +19,7 @@ const IndexPage = () => {
     .then(res => res.json())
     .then(data => setTrips(data))
   }, [])
- 
-console.log("useState", trips)
+
   return (
     <Layout>
       <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
