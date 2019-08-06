@@ -3,7 +3,7 @@ import { deleteTodo } from '../Redux/actions/actions';
 import TodoList from './TodoList';
 
 const mapStateToProps = state => ({
-  todos: state.todos,
+  // todos: state.todos,
 });
 
 const mapDispatchToProps={
