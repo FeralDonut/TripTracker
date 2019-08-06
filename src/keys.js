@@ -1,0 +1,1 @@
+export default weatherKEY = 'c9264b2f05d21e20ac8a0f1af1e7f7c9'
