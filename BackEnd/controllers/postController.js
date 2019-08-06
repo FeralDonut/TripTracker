@@ -30,8 +30,7 @@ exports.post_view = function(req, res, next) {
     Trip.findById(req.params.trip_id, 'title blog', function(err, trip) {
         if (err)
             return (err);
-
-        toReturn = trip.blog.id(req.params.post_id);
+        toReturn = trip.blog.id(req.params.post_id).toJSON();
         toReturn.trip_title = "this is a test!";
         // Figure a way o
         if (err)

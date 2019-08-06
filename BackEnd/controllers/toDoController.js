@@ -1,19 +1,19 @@
-var Packable = require('../models/packable');
+var ToDo = require('../models/toDo');
 var Trip = require('../models/trip');
 
-exports.packable_create = function(req, res, next){
+exports.toDo_create = function(req, res, next){
     Trip.findById(req.params.trip_id, function(err, member) {
         if (err)
             return (err);
 
-        new_packable = new Packable(req.body);
+        new_toDo = new ToDo(req.body);
 
         if(member.blog == undefined){
-            member.blog = [new_packable];
+            member.blog = [new_toDo];
 
         }
         else{
-            member.blog.push(new_packable);
+            member.blog.push(new_toDo);
         }
 
         member.save(function(err) {
@@ -26,33 +26,31 @@ exports.packable_create = function(req, res, next){
     });
 };
 
-exports.packable_view = function(req, res, next) {
-    Trip.findById(req.params.trip_id, function(err, member) {
+exports.toDo_view = function(req, res, next) {
+    Trip.findById(req.params.trip_id, 'title',function(err, member) {
         if (err)
             return (err);
 
         console.log(member.blog);
         console.log(req.params.blog_id);
-        var packable = member.blog.id(req.params.blog_id);
+        var toDo = member.blog.id(req.params.blog_id);
+        console.log(toDo);
 
-        member.save(function(err) {
-            if (err)
-                res.send(err);
-
-            res.json(packable);
-        });
-
+        if (err)
+            res.send(err);
+        else
+            res.json(member);
     });
 };
 
-exports.packable_delete = function(req, res, next) {
+exports.toDo_delete = function(req, res, next) {
     console.log(req.params);
     Trip.findById(req.params.trip_id, function(err, member) {
         if (err)
             return (err);
 
 
-        member.blog.pull(req.params.packable_id);
+        member.blog.pull(req.params.toDo_id);
 
         member.save(function(err) {
             if (err)
@@ -65,7 +63,7 @@ exports.packable_delete = function(req, res, next) {
 };
 
 
-exports.packable_update = function(req, res, next){
+exports.toDo_update = function(req, res, next){
     console.log(req.params);
     console.log(req.body);
     Trip.findByIdAndUpdate(req.params.trip_id,
@@ -82,7 +80,7 @@ exports.packable_update = function(req, res, next){
     //     if (err)
     //         return (err);
     //
-    //     var toUpdate = member.blog.id(req.params.packable_id);
+    //     var toUpdate = member.blog.id(req.params.toDo_id);
     //     toUpdate.update(req.body);
     //     // toUpdate.title = "GET FUCKED!";
     //     console.log(toUpdate);
@@ -91,7 +89,7 @@ exports.packable_update = function(req, res, next){
     //         if (err)
     //             res.send(err);
     //
-    //         res.json({ message: 'Packable updated!!!' });
+    //         res.json({ message: 'ToDo updated!!!' });
     //     });
     //
     // });
