@@ -5,7 +5,7 @@ import SEO from "../components/seo"
 import { Jumbotron } from 'reactstrap';
 import style from './styles.module.css'
 import user from '../utils/mockData';
-import TripList from '../components/Trips/TripList';
+import TripList from '../components/Trips/TripListContainer';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faUserAstronaut } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -46,8 +46,3 @@ const IndexPage = () => {
 }
 
 export default IndexPage;
-// Connect the page to the store
-// export default connect(state => ({
-//   isDarkMode: state.app.isDarkMode
-// }), null)(IndexPage)
-

@@ -17,10 +17,11 @@ const TripCard = props => {
 		endDate,
 		description,
 		locations,
+		onclick,
 	} = props
 
 return (
-		<Card className='trip-card' key={id}>
+		<Card className='trip-card' key={id} onClick={onclick}>
 			<CardHeader className={style.card_header}>
 				<Alert color={''}>
 					{title}

@@ -10,7 +10,7 @@ import CreateEntry from '../Journal/CreateEntryContainer';
 import JournalList from '../Journal/JournalListContainer';
 
 const Dashboard = props => {
-  const { activeTab, setActiveTab } = props;
+  const { individualTrip, activeTab, setActiveTab } = props;
 
   const tabPicker = event => {
     setActiveTab(event.target.name);
@@ -47,7 +47,7 @@ const Dashboard = props => {
               <Nav tabs>{tabRouting}</Nav>
               <TabContent activeTab={activeTab}>
                 <TabPane tabId="attractions">
-                  <TodoList />
+                  <TodoList todos={individualTrip.todos}/>
                   <CreateTodo />
                 </TabPane>
                 <TabPane tabId="eateries">

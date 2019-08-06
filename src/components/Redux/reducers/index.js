@@ -10,6 +10,7 @@ import pendingEntry from './pendingEntry';
 import journalEntry from './journalEntry';
 import activeEntry from './activeEntry';
 import editActiveEntry from './editActiveEntry';
+import individualTrip from './individualTrip';
 
 export default combineReducers({
   dashboardTab,
@@ -23,4 +24,5 @@ export default combineReducers({
   journalEntry,
   activeEntry,
   editActiveEntry,
+  individualTrip,
 });
