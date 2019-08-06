@@ -22,8 +22,23 @@ const TodoSchema = new Schema({
         type: Date,
         requifed: false,
         default: null,
-    }
+    },
+    relatedObject : {
+        type: Schema.Types.ObjectId,
+        required: false,
+        refPath: 'relatedModel'
+    },
+    relatedModel: {
+        type: String,
+        enum: ["Restaurant", "Attraction"],
+        required: [
+            function() {
+                return this.relatedItem != null;
+            },
+            'If related Item is set, model type must be specified'
+        ]
+    },
 }, {timestamps: true});
 
 
-const User = mongoose.model('Todo', TodoSchema);
+module.exports = mongoose.model('ToDo', TodoSchema);

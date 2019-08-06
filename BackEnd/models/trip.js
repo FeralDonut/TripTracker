@@ -5,8 +5,9 @@ const PhotoModel = require('./photo');
 const Address = require('./address');
 const PostModel = require('./post');
 const PackableSchema = require('./packable');
-const TodoSchema = require('./todo');
 const Location = require('./location');
+const ToDo = require('./todo');
+const PackingEntry = require('./packingEntry');
 
 
 //create schema for trip
@@ -23,73 +24,8 @@ const TripSchema = new Schema({
     start_date : Date,
     end_date: Date,
     locations : [Location.schema],
-    // accomodations: [{
-    //
-    // }],
-    // travel: [{
-    //
-    // }],
-    packing_list : [{
-        item: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Packable',
-            required: true
-        },
-        count: {
-            type: Number,
-            required:true,
-            default:1
-        },
-        packed: {
-            type: Boolean,
-            required:true,
-            default: false
-        },
-        packed_on: {
-            type: Date
-        }
-    }],
-    todos : [{
-        title: {
-            type: String,
-            required: true,
-        },
-        description: {
-            type: String,
-            required: false
-        },
-        relatedItem : {
-            type: Schema.Types.ObjectId,
-            required: false,
-            refPath: 'relatedModel'
-        },
-        relatedModel: {
-            type: String,
-            enum: ["Restaurant", "Attraction"],
-            required: [
-                function() {
-                    return this.relatedItem != null;
-                },
-                'If related Item is set, model type must be specified'
-            ]
-        },
-        completed: {
-            type: Boolean,
-            require: true,
-            default: false
-        },
-        completed_on: {
-            type: Date,
-            required: false,
-        },
-        rank: {
-            type: Number,
-            required: false,
-            default: 0,
-            min: 0,
-            max: 10
-        }
-    }],
+    packing_list : [PackingEntry.schema],
+    todos : [ToDo.schema],
     photos: [PhotoModel.schema]
 }, {timestamps: true});
 

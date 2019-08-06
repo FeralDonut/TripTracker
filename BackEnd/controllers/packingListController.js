@@ -1,5 +1,6 @@
 var Packable = require('../models/packable');
 var Trip = require('../models/trip');
+var PackingEntry = require('../models/packingEntry');
 
 exports.packable_create = function(req, res, next){
     Trip.findById(req.params.trip_id, function(err, member) {

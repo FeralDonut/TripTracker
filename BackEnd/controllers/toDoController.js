@@ -1,62 +1,64 @@
-var ToDo = require('../models/toDo');
+var ToDo = require('../models/todo');
 var Trip = require('../models/trip');
 
 exports.toDo_create = function(req, res, next){
-    Trip.findById(req.params.trip_id, function(err, member) {
+    Trip.findById(req.params.trip_id, function(err, trip) {
         if (err)
             return (err);
 
         new_toDo = new ToDo(req.body);
 
-        if(member.blog == undefined){
-            member.blog = [new_toDo];
-
+        // Either create the todos array, or push a new instance to the array
+        if(trip.todos == undefined){
+            trip.todos = [new_toDo];
         }
         else{
-            member.blog.push(new_toDo);
+            trip.todos.push(new_toDo);
         }
 
-        member.save(function(err) {
+        trip.save(function(err) {
             if (err)
                 res.send(err);
 
-            res.json({ message: 'Address created!!!' });
+            res.json({ message: 'Todo created!!!' });
         });
 
     });
 };
 
 exports.toDo_view = function(req, res, next) {
-    Trip.findById(req.params.trip_id, 'title',function(err, member) {
+    Trip.findById(req.params.trip_id, 'title todos',function(err, trip) {
         if (err)
             return (err);
 
-        console.log(member.blog);
-        console.log(req.params.blog_id);
-        var toDo = member.blog.id(req.params.blog_id);
-        console.log(toDo);
+        toReturn = trip.todos.id(req.params.todo_id);
 
-        if (err)
-            res.send(err);
-        else
-            res.json(member);
+        // If the subdocument doesn't exist, can't return it
+        if (toReturn == undefined)
+            res.json({message: "Trip doesn't contain this subdocument"});
+        else {
+            toReturn.trip_title = trip.title;
+            toReturn.trip_description = trip.description;
+            res.json(toReturn);
+        }
+
     });
 };
 
 exports.toDo_delete = function(req, res, next) {
     console.log(req.params);
-    Trip.findById(req.params.trip_id, function(err, member) {
+    Trip.findById(req.params.trip_id, function(err, trip) {
         if (err)
             return (err);
 
 
-        member.blog.pull(req.params.toDo_id);
+        trip.todos.pull(req.params.toDo_id);
 
-        member.save(function(err) {
+        trip.save(function(err) {
             if (err)
                 res.send(err);
 
-            res.json(member);
+            res.json(trip);
         });
 
     });
