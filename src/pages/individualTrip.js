@@ -1,10 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "gatsby";
+import { Jumbotron } from "reactstrap";
 import Layout from "../components/layout";
 import SEO from "../components/seo";
 import DashBoard from "../components/Dashboard/DashboardContainer";
 import Weather from "../components/Weather/Weather";
+import style from "./styles.module.css";
 
 const IndividualTrips = ({ trip }) => {
   return (
@@ -17,8 +19,11 @@ const IndividualTrips = ({ trip }) => {
         </div>
       ) : (
         <div>
-          <Weather zip={trip.locations[0].address.zip} />
           <h1>{trip.title}</h1>
+          <h2>5 Day weather forecase for {trip.locations[0].address.city}</h2>
+
+          <Weather zip={trip.locations[0].address.zip} />
+
           <DashBoard individualTrip={trip} />
         </div>
       )}
