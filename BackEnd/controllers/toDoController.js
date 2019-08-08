@@ -52,7 +52,7 @@ exports.toDo_delete = function(req, res, next) {
             return (err);
 
 
-        trip.todos.pull(req.params.toDo_id);
+        trip.todos.pull(req.params.todo_id);
 
         trip.save(function(err) {
             if (err)
