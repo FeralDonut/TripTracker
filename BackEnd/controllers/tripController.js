@@ -25,3 +25,4 @@ exports.trip_detail = function(req, res, next) {
 };
 
 
+

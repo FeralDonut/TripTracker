@@ -5,8 +5,9 @@ const Packable = require('./packable');
 
 const PackingEntrySchema = new Schema({
     item: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Packable',
+        // type: mongoose.Schema.Types.ObjectId,
+        // ref: 'Packable',
+        type: String,
         required: true
     },
     count: {

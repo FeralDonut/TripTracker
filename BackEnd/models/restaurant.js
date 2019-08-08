@@ -9,20 +9,24 @@ const RestaurantSchema = new Schema({
     name: {
         type: String,
         index: true,
-        required: [true, 'All blogs need a title.']
+        required: [true, 'All restaurants need a name.']
     },
-    category : {
-        type: String,
-        required: true
-    },
+    // category : {
+    //     type: String,
+    //     required: false
+    // },
     description: {
         type: String,
         required: false,
     },
-    address: {
-        type: Address.schema,
-        // required: true
+    visited: {
+        type: Boolean,
+        default: false
     },
+    // address: {
+    //     type: Address.schema,
+    //     // required: true
+    // },
     photos: [PhotoModel.schema]
 }, {timestamps: true});
 
