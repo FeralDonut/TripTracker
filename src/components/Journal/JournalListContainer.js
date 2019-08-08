@@ -1,8 +1,8 @@
-import { connect } from 'react-redux';
-import JournalList from './JournalList';
+import { connect } from "react-redux";
+import JournalList from "./JournalList";
 
 const mapStateToProps = state => ({
- journalEntry: state.journalEntry,
+  // journalEntry: state.journalEntry
 });
 
 export default connect(mapStateToProps)(JournalList);

@@ -1,36 +1,41 @@
-import React from 'react';
-import Form from '../Form/Form';
-import Input from '../Inputs/Input';
-
+import React from "react";
+import Form from "../Form/Form";
+import Input from "../Inputs/Input";
 
 const CreateTodoForm = props => {
-  const { 
+  const {
+    tripID,
     id,
     description,
     editPendingTodo,
-    publishTodo, 
-    deleteTodo 
+    publishTodo,
+    deleteTodo
   } = props;
-
-  const handleChange = (event) => {
+  console.log("FFFFFF", props);
+  console.log("CREATETODO TripID", tripID);
+  const handleChange = event => {
     editPendingTodo({ [event.target.name]: event.target.value, id });
   };
-  const createSave = (e) => {
+  const createSave = e => {
     e.preventDefault();
-    // fetch('http://localhost:3000/todo', {
-    //   method: 'post',
-    //   headers: {
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: JSON.stringify({name, description})
-    // }).then(res => {
-      publishTodo(id, description);
+    fetch(`http://24.4.98.147:8000/api/trips/${tripID}/todos/`, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        title: description
+      })
+    })
+      .then(res => res.json())
+      .then(data => console.log("POST RESPONSE", data));
+    // publishTodo(id, description);
     // })
-    
   };
-  const handleDelete = (e) => {
+  const handleDelete = e => {
     e.preventDefault();
-    deleteTodo( id );
+    deleteTodo(id);
   };
   return (
     <Form
@@ -44,10 +49,10 @@ const CreateTodoForm = props => {
         type="text"
         placeholder="description"
         id="description"
-        onChange={e => handleChange(e)} 
+        onChange={e => handleChange(e)}
       />
     </Form>
   );
-}
+};
 
 export default CreateTodoForm;

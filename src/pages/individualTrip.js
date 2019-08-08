@@ -20,10 +20,8 @@ const IndividualTrips = ({ trip }) => {
       ) : (
         <div>
           <h1>{trip.title}</h1>
-          <h2>5 Day weather forecase for {trip.location.city}</h2>
-
+          <h6>5 Day weather forecase for {trip.location.city}</h6>
           <Weather zip={trip.location.zip} />
-
           <DashBoard individualTrip={trip} />
         </div>
       )}

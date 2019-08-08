@@ -1,24 +1,22 @@
-import React from 'react';
-import JournalEntry from './JournalEntryContainer';
-import style from './JournalListStyles.modules.css';
+import React from "react";
+import JournalEntry from "./JournalEntryContainer";
+import style from "./JournalListStyles.modules.css";
 
-const JournalList = (props) => {
-  
-  const entries = props.journalEntry.map(entry =>(
+const JournalList = ({ posts }) => {
+  const tripID = posts._id;
+
+  const entries = posts.blog.map(entry => (
     <JournalEntry
-      key={entry.id}
-      id={entry.id}
+      key={entry._id}
+      id={entry._id}
       title={entry.title}
-      date={entry.date}
-      description={entry.description}
-    />    
+      published_on={entry.published_on}
+      description={entry.body}
+      tripID={tripID}
+    />
   ));
-  
-  return(
-    <div className={style.container} >
-      {entries}
-    </div>
-  );
+
+  return <div className={style.container}>{entries}</div>;
 };
 
-export default JournalList
+export default JournalList;
