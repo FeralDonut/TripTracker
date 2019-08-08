@@ -164,8 +164,18 @@ export const deselectEntry = () => {
 };
 
 
+/*****************
+ * 
+ * Miscellaneous Actions
+ * 
+ ******************/
 
 export const setActiveTab = tabName => ({
   type: 'SET_ACTIVE_TAB',
   tabName,
+});
+
+export const setIndividualTrip = trip => ({
+  type: 'SET_INDIVIDUAL_TRIP',
+  trip,
 });

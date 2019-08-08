@@ -3,7 +3,8 @@ import { setActiveTab } from '../Redux/actions/actions';
 import Dashboard from './Dashboard';
 
 const mapStateToProps = state => ({
-  activeTab: state.dashboardTab.activeTab
+  activeTab: state.dashboardTab.activeTab,
+  trip: state.individualTrip
 });
 
 const mapDisptachToProps = {

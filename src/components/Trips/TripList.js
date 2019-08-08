@@ -1,8 +1,14 @@
 import React from 'react';
 import TripCard from './TripCard';
-//import style from './JournalListStyles.modules.css';
+import { Link } from 'gatsby';
+import style from "./TripCardStyle.module.css";
 
-const TripList = ({trips}) => {
+const TripList = ({trips, setIndividualTrip}) => {
+
+  const handleClick = trip => {
+    setIndividualTrip(trip)
+  }
+  
   const myTrips = trips.map(trip =>(
     <TripCard
       key={trip._id}
@@ -12,8 +18,11 @@ const TripList = ({trips}) => {
       endDate={trip.end_date}
       description={trip.description}
       locations={trip.locations}
+      onclick={() => handleClick(trip)}
     />    
   ));
+
+  
   
   return(
     <div >
@@ -21,7 +30,9 @@ const TripList = ({trips}) => {
         <div>Currently No Trips</div>
       ):(
         <div>
-          {myTrips}
+          <Link to="/individualTrip" style={{textDecoration: 'none', color: 'black'}}>
+            {myTrips}
+          </Link>
         </div>
       )}
     </div>

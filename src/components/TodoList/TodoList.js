@@ -17,7 +17,7 @@ const TodoList = ({ todos, deleteTodo }) => {
   return (
     <List>
       {todos.map(todo => (
-        <ListItem key={todo.id} dense button>
+        <ListItem key={todo._id} dense button>
           <Checkbox tabIndex={-1} disableRipple onClick={() => handleClick()}/>
           <ListItemText primary={todo.description} />
           <ListItemSecondaryAction>
