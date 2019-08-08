@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 
 const TransportSchema = new Schema({
-    name: string,
+    name: String,
     when:Date,
     confirmation: String
 }, {timestamps: true});

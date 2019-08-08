@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 
 const HotelSchema = new Schema({
-    name: string,
+    name: String,
     start_date:Date,
     end_date: Date,
     confirmation: String
