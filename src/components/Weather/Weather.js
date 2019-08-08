@@ -21,14 +21,16 @@ const WeatherAPI = ({ zip }) => {
         setDailyData(dailyData);
       });
   }, []);
-
   return (
     <div className="container">
-      <div className="row justify-content-center">
+      <div className="row justify-content-center m-4">
         {dailyData ? (
-          dailyData.map((reading, index) => (
-            <WeatherCard reading={reading} key={index} />
-          ))
+          dailyData.map(
+            (reading, index) => (
+              console.log(reading),
+              <WeatherCard reading={reading} key={index} />
+            )
+          )
         ) : (
           <div>no weather</div>
         )}

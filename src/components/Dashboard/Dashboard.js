@@ -13,7 +13,7 @@ const Dashboard = props => {
   const { individualTrip, activeTab, setActiveTab } = props;
   console.log("DAHBOARD", individualTrip);
   const tripID = individualTrip._id;
-  console.log("DB tripID", tripID);
+
   const tabPicker = event => {
     setActiveTab(event.target.name);
   };
