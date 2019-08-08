@@ -20,7 +20,7 @@ exports.toDo_create = function(req, res, next){
             if (err)
                 res.send(err);
 
-            res.json({ message: 'Todo created!!!' });
+            res.json(new_toDo);
         });
 
     });

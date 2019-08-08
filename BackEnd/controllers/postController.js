@@ -20,7 +20,7 @@ exports.post_create = function(req, res, next){
             if (err)
                 res.send(err);
 
-            res.json({ message: 'Address created!!!' });
+            res.json(new_post);
         });
 
     });
