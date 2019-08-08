@@ -1,44 +1,48 @@
-import React from 'react';
-import style from './EditJournalFormStyles.module.css';
-import Form from '../../Form/Form';
-import Input from '../../Inputs/Input';
+import React from "react";
+import style from "./EditJournalFormStyles.module.css";
+import Form from "../../Form/Form";
+import Input from "../../Inputs/Input";
 
-const EditTaskForm = (props) => {
+const EditJournalForm = props => {
   const {
+    blogID,
+    tripID,
     deleteEntry,
     editEntry,
     editActiveEntry,
     updateEntry,
     deselectEntry
   } = props;
-  const {
-    id,
-    title,
-    date,
-    description
-  } = editActiveEntry;
+  const { id, title, date, description } = editActiveEntry;
 
-  const editSave = (e) => {
+  const editSave = e => {
     e.preventDefault();
-    updateEntry( id, title, date, description );
+    updateEntry(id, title, date, description);
   };
 
-  const handleDelete = (e) => {
+  const handleDelete = e => {
     e.preventDefault();
-    deleteEntry( id );
+
+    fetch(`http://24.4.98.147:8000/api/trips/${tripID}/posts/${blogID}`, {
+      method: "delete"
+    }).then(response =>
+      response.json().then(json => {
+        return json;
+      })
+    );
+    // deleteEntry(blogID);
   };
 
-  const handleChange = (e) => {
+  const handleChange = e => {
     editEntry({ [e.target.name]: e.target.value, id });
   };
 
-  const handleDeselect = (event) => {
-    if (event.relatedTarget.id === "gatsby-focus-wrapper" ) {
+  const handleDeselect = event => {
+    if (event.relatedTarget.id === "gatsby-focus-wrapper") {
       deselectEntry();
     }
     return;
-  };     
-  
+  };
 
   return (
     <div
@@ -57,22 +61,20 @@ const EditTaskForm = (props) => {
           placeholder="Entry Title"
           id="title"
           value={title}
-          onChange={e => handleChange(e)} 
-      />
+          onChange={e => handleChange(e)}
+        />
         <textarea
           id="description"
           name="description"
           rows="6"
           cols="75"
           value={description}
-          onChange={e => handleChange(e)} 
+          onChange={e => handleChange(e)}
           autoFocus
-        >
-          
-        </textarea>
+        />
       </Form>
     </div>
   );
 };
 
-export default EditTaskForm;
+export default EditJournalForm;

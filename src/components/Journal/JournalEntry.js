@@ -3,12 +3,13 @@ import style from "./JournalEntryStyles.module.css";
 import moment from "moment";
 import EditJournalForm from "./EditJournalForm/EditJournalFormContainer";
 
-const journalEntry = props => {
+const JournalEntry = props => {
   const {
     id,
     title,
     published_on,
     description,
+    tripID,
     selectEntry,
     activeEntry
   } = props;
@@ -19,7 +20,7 @@ const journalEntry = props => {
   return (
     <Fragment>
       {activeEntry === id ? (
-        <EditJournalForm />
+        <EditJournalForm blogID={id} tripID={tripID} />
       ) : (
         id && (
           <div className={style.entry} onClick={handleSelect}>
@@ -33,4 +34,4 @@ const journalEntry = props => {
   );
 };
 
-export default journalEntry;
+export default JournalEntry;

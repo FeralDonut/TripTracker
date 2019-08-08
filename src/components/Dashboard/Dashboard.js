@@ -11,7 +11,9 @@ import JournalList from "../Journal/JournalListContainer";
 
 const Dashboard = props => {
   const { individualTrip, activeTab, setActiveTab } = props;
-  console.log("XXXXXXXX", individualTrip.blog);
+  console.log("DAHBOARD", individualTrip);
+  const tripID = individualTrip._id;
+  console.log("DB tripID", tripID);
   const tabPicker = event => {
     setActiveTab(event.target.name);
   };
@@ -47,20 +49,20 @@ const Dashboard = props => {
       <Nav tabs>{tabRouting}</Nav>
       <TabContent activeTab={activeTab}>
         <TabPane tabId="attractions">
-          <TodoList todos={individualTrip.todos} />
-          <CreateTodo />
+          <TodoList tripID={tripID} todos={individualTrip.todos} />
+          <CreateTodo tripID={tripID} />
         </TabPane>
         <TabPane tabId="eateries">
-          <EateriesList />
+          <EateriesList restaurants={individualTrip.restaurants} />
           <CreateEatery />
         </TabPane>
         <TabPane tabId="journal">
-          <CreateEntry />
-          <JournalList abc={individualTrip.blog} />
+          <CreateEntry tripID={tripID} />
+          <JournalList posts={individualTrip} />
         </TabPane>
         <TabPane tabId="info">Important Information</TabPane>
         <TabPane tabId="packing">
-          <PackingList />
+          <PackingList list={individualTrip.packing_list} />
           <CreatePackingList />
         </TabPane>
       </TabContent>
