@@ -17,7 +17,7 @@ const TripList = ({trips, setIndividualTrip}) => {
       startDate={trip.start_date}
       endDate={trip.end_date}
       description={trip.description}
-      locations={trip.locations}
+      locations={trip.location}
       onclick={() => handleClick(trip)}
     />    
   ));

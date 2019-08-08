@@ -20,6 +20,8 @@ const IndexPage = () => {
       .then(data => setTrips(data));
   }, []);
 
+  console.log(trips);
+
   return (
     <Layout>
       <SEO title="TripTracker" keywords={[`gatsby`, `application`, `react`]} />
@@ -47,10 +49,3 @@ const IndexPage = () => {
 };
 
 export default IndexPage;
-<<<<<<< HEAD
-// Connect the page to the store
-// export default connect(state => ({
-//   isDarkMode: state.app.isDarkMode
-// }), null)(IndexPage)
-=======
->>>>>>> c2d2cc0c95d15cd30d6ade40faba5988574965b6
