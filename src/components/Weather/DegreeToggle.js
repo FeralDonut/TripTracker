@@ -1,34 +1,38 @@
-import React from 'react';
+import React from "react";
 
-const DegreeToggle = ({degreeType, updateForecastDegree}) => {
+const DegreeToggle = ({ degreeType, updateForecastDegree }) => {
   return (
     <>
-    <div className="form-check form-check-inline">
+      <div className="form-check form-check-inline">
         <input
-        className="form-check-input"
-        type="radio"
-        name="degree-type"
-        id="celsius"
-        value="celsius"
-        checked={degreeType === "celsius"}
-        onChange={updateForecastDegree}
+          className="form-check-input"
+          type="radio"
+          name="degree-type"
+          id="celsius"
+          value="celsius"
+          checked={degreeType === "celsius"}
+          onChange={updateForecastDegree}
         />
-        <label className="form-check-label" for="celsius">Celsius</label>
+        <label className="form-check-label" htmlFor="celsius">
+          Celsius
+        </label>
       </div>
       <div className="form-check form-check-inline">
         <input
-        className="form-check-input"
-        type="radio"
-        name="degree-type"
-        id="farenheit"
-        value="fahrenheit"
-        checked={degreeType === "fahrenheit"}
-        onChange={updateForecastDegree}
+          className="form-check-input"
+          type="radio"
+          name="degree-type"
+          id="farenheit"
+          value="fahrenheit"
+          checked={degreeType === "fahrenheit"}
+          onChange={updateForecastDegree}
         />
-        <label className="form-check-label" for="farenheit">Farenheit</label>
+        <label className="form-check-label" htmlFor="farenheit">
+          Farenheit
+        </label>
       </div>
     </>
-  )
-}
+  );
+};
 
 export default DegreeToggle;
