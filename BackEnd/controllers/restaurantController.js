@@ -1,32 +1,74 @@
+var Post = require('../models/post');
+var Trip = require('../models/trip');
 var Restaurant = require('../models/restaurant');
 
-exports.restaurant_list = function(req, res, next) {
-    Restaurant.find({})
-        .select({
-            _id: 1,
-            name: 1,
-            category: 1,
-            address: 1,
-            photos: 1
-        })
-        .then(data => res.json(data))
-        .catch(next)
+exports.restaurant_create = function(req, res, next){
+    Trip.findById(req.params.trip_id, function(err, restaurant) {
+        if (err)
+            return (err);
+
+        new_item = new Restaurant(req.body);
+
+        if(restaurant.restaurants == undefined){
+            restaurant.restaurants = [new_item];
+
+        }
+        else{
+            restaurant.restaurants.push(new_item);
+        }
+
+        restaurant.save(function(err) {
+            if (err)
+                res.send(err);
+            console.log("no error!");
+            console.log(new_item);
+            res.json(new_item);
+        });
+
+    });
 };
 
-exports.restaurant_create_post = function(req, res, next){
-    if(req.body.name && req.body.category){
-        Restaurant.create(req.body)
-            .then(data => res.json(data))
-            .catch(next)
-    }else {
-        res.json({
-            error: "The input field is empty"
-        })
-    }
+exports.restaurant_view = function(req, res, next) {
+    Trip.findById(req.params.trip_id, 'title restaurants', function(err, trip) {
+        if (err)
+            return (err);
+        toReturn = trip.restaurants.id(req.params.restaurant_id);
+
+        // Figure a way o
+        if (!toReturn)
+            res.send(403, "You don't have the right to view this");
+        else
+            res.json(toReturn.toJSON());
+    });
 };
 
-exports.restaurant_detail = function(req, res, next) {
-    Restaurant.findById(req.params.id)
-        .then(data => res.json(data))
-        .catch(next)
+exports.restaurant_delete = function(req, res, next) {
+    console.log(req.params);
+    Trip.findById(req.params.trip_id, function(err, post) {
+        if (err)
+            return (err);
+
+        post.restaurants.pull(req.params.restaurant_id);
+
+        post.save(function(err) {
+            if (err)
+                res.send(err);
+
+            res.json(post);
+        });
+
+    });
+};
+
+
+exports.restaurant_update = function(req, res, next){
+    Trip.findById(req.params.trip_id, function(err, trip) {
+        var post = trip.restaurants.id(req.params.restaurant_id).set(req.body);
+        trip.save().then(function(savedTrip) {
+            var toReturn = savedTrip.restaurants.id(req.params.restaurant_id);
+            res.send(toReturn);
+        }).catch(function(error) {
+            res.status(500).send(err);
+        })
+    })
 };

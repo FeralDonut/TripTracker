@@ -1,100 +1,72 @@
-var Packable = require('../models/packable');
+var Post = require('../models/post');
 var Trip = require('../models/trip');
 var PackingEntry = require('../models/packingEntry');
 
-exports.packable_create = function(req, res, next){
-    Trip.findById(req.params.trip_id, function(err, member) {
+exports.packinglist_create = function(req, res, next){
+    Trip.findById(req.params.trip_id, function(err, trip) {
         if (err)
             return (err);
 
-        new_packable = new Packable(req.body);
+        new_item = new PackingEntry(req.body);
 
-        if(member.blog == undefined){
-            member.blog = [new_packable];
+        if(trip.packing_list == undefined){
+            trip.packing_list = [new_item];
 
         }
         else{
-            member.blog.push(new_packable);
+            trip.packing_list.push(new_item);
         }
 
-        member.save(function(err) {
+        trip.save(function(err) {
             if (err)
                 res.send(err);
-
-            res.json({ message: 'Address created!!!' });
+            res.json(new_item);
         });
 
     });
 };
 
-exports.packable_view = function(req, res, next) {
-    Trip.findById(req.params.trip_id, function(err, member) {
+exports.packinglist_view = function(req, res, next) {
+    Trip.findById(req.params.trip_id, 'title packing_list', function(err, trip) {
+        if (err)
+            return (err);
+        toReturn = trip.packing_list.id(req.params.entry_id);
+
+        // Figure a way o
+        if (!toReturn)
+            res.send(403, "You don't have the right to view this");
+        else
+            res.json(toReturn.toJSON());
+    });
+};
+
+exports.packinglist_delete = function(req, res, next) {
+    console.log(req.params);
+    Trip.findById(req.params.trip_id, function(err, post) {
         if (err)
             return (err);
 
-        console.log(member.blog);
-        console.log(req.params.blog_id);
-        var packable = member.blog.id(req.params.blog_id);
+        post.packing_list.pull(req.params.entry_id);
 
-        member.save(function(err) {
+        post.save(function(err) {
             if (err)
                 res.send(err);
 
-            res.json(packable);
-        });
-
-    });
-};
-
-exports.packable_delete = function(req, res, next) {
-    console.log(req.params);
-    Trip.findById(req.params.trip_id, function(err, member) {
-        if (err)
-            return (err);
-
-
-        member.blog.pull(req.params.packable_id);
-
-        member.save(function(err) {
-            if (err)
-                res.send(err);
-
-            res.json(member);
+            res.json(post);
         });
 
     });
 };
 
 
-exports.packable_update = function(req, res, next){
-    console.log(req.params);
-    console.log(req.body);
-    Trip.findByIdAndUpdate(req.params.trip_id,
-        {"blog._id": req.params.blog_id}
-    )
-        .then(data => res.json(data))
-        .catch(next)
-
-
-
-    //
-    // Trip.findById(req.params.trip_id, function(err, member) {
-    //     console.log(member);
-    //     if (err)
-    //         return (err);
-    //
-    //     var toUpdate = member.blog.id(req.params.packable_id);
-    //     toUpdate.update(req.body);
-    //     // toUpdate.title = "GET FUCKED!";
-    //     console.log(toUpdate);
-    //     // toUpdate.update(req.body);
-    //     member.save(function(err) {
-    //         if (err)
-    //             res.send(err);
-    //
-    //         res.json({ message: 'Packable updated!!!' });
-    //     });
-    //
-    // });
+exports.packinglist_update = function(req, res, next){
+    Trip.findById(req.params.trip_id, function(err, trip) {
+        var post = trip.packing_list.id(req.params.entry_id).set(req.body);
+        trip.save().then(function(savedTrip) {
+            var toReturn = savedTrip.packing_list.id(req.params.entry_id);
+            res.send(toReturn);
+        }).catch(function(error) {
+            res.status(500).send(err);
+        })
+    })
 };
-

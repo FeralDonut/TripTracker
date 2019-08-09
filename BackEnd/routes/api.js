@@ -9,7 +9,7 @@ const trip_controller = require('../controllers/tripController');
 const post_controller = require('../controllers/postController');
 const location_controller = require('../controllers/locationController');
 const toDo_controller = require('../controllers/toDoController');
-
+const packinglist_controller = require('../controllers/packingListController');
 
 /**
  * Routes for a User
@@ -67,19 +67,6 @@ router.delete('/users/:id', (req, res, next) => {
 // })
 
 
-/**
- * Routes for restaurants
- */
-router.get('/restaurants', restaurant_controller.restaurant_list);
-router.get('/restaurants/:id', restaurant_controller.restaurant_detail);
-router.post('/restaurants', restaurant_controller.restaurant_create_post);
-
-/*
- * Routes for packables
- */
-router.get('/packables', packable_controller.packable_list);
-router.get('/packables/:id', packable_controller.packable_detail);
-router.post('/packables', packable_controller.packable_create);
 
 /**
  * Routes for trips
@@ -91,20 +78,11 @@ router.get('/trips/:trip_id', trip_controller.trip_detail);
 
 /**
  * Routes for posts
- * @type {Router|router}
  */
 router.post ('/trips/:trip_id/posts', post_controller.post_create);
 router.get('/trips/:trip_id/posts/:post_id', post_controller.post_view);
 router.patch('/trips/:trip_id/posts/:post_id', post_controller.post_update);
 router.delete('/trips/:trip_id/posts/:post_id', post_controller.post_delete);
-
-/**
- * Routes for locations
- */
-router.post ('/trips/:trip_id/locations', location_controller.location_create);
-router.get('/trips/:trip_id/locations/:location_id', location_controller.location_view);
-router.patch('/trips/:trip_id/locations/:location_id', location_controller.location_update);
-router.delete('/trips/:trip_id/locations/:location_id', location_controller.location_delete);
 
 /**
  * Routes for todos
@@ -113,5 +91,22 @@ router.post ('/trips/:trip_id/todos', toDo_controller.toDo_create);
 router.get('/trips/:trip_id/todos/:todo_id', toDo_controller.toDo_view);
 router.patch('/trips/:trip_id/todos/:todo_id', toDo_controller.toDo_update);
 router.delete('/trips/:trip_id/todos/:todo_id', toDo_controller.toDo_delete);
+
+/**
+ * Routes for restaurants
+ */
+router.post ('/trips/:trip_id/restaurants', restaurant_controller.restaurant_create);
+router.get('/trips/:trip_id/restaurants/:restaurant_id', restaurant_controller.restaurant_view);
+router.patch('/trips/:trip_id/restaurants/:restaurant_id', restaurant_controller.restaurant_update);
+router.delete('/trips/:trip_id/restaurants/:restaurant_id', restaurant_controller.restaurant_delete);
+
+/**
+ * Packing list routes
+ */
+router.post ('/trips/:trip_id/packinglist', packinglist_controller.packinglist_create);
+router.get('/trips/:trip_id/packinglist/:entry_id', packinglist_controller.packinglist_view);
+router.patch('/trips/:trip_id/packinglist/:entry_id', packinglist_controller.packinglist_update);
+router.delete('/trips/:trip_id/packinglist/:entry_id', packinglist_controller.packinglist_delete);
+
 
 module.exports = router;

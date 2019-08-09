@@ -60,39 +60,13 @@ exports.post_delete = function(req, res, next) {
 
 
 exports.post_update = function(req, res, next){
-    console.log(req.params);
-    console.log(req.body);
-    // var to_set = {
-    //     : "It may work!",
-    //     "body": "This will be the first body"
-    // }
-    Trip.findOneAndUpdate(
-        {"_id": req.params.trip_id,"blog._id": req.params.post_id},
-        {$set: {
-                "blog.$": req.body
-            }
-        }
-    )
-        .then(data => res.json(data))
-        .catch(next)
-    //
-    // Trip.findById(req.params.trip_id, function(err, member) {
-    //     console.log(member);
-    //     if (err)
-    //         return (err);
-    //
-    //     var toUpdate = member.blog.id(req.params.post_id);
-    //     toUpdate.update(req.body);
-    //     // toUpdate.title = "GET FUCKED!";
-    //     console.log(toUpdate);
-    //     // toUpdate.update(req.body);
-    //     member.save(function(err) {
-    //         if (err)
-    //             res.send(err);
-    //
-    //         res.json({ message: 'Post updated!!!' });
-    //     });
-    //
-    // });
+    Trip.findById(req.params.trip_id, function(err, trip) {
+        var post = trip.blog.id(req.params.post_id).set(req.body);
+        trip.save().then(function(savedTrip) {
+            var toReturn = savedTrip.blog.id(req.params.post_id);
+            res.send(toReturn);
+        }).catch(function(error) {
+            res.status(500).send(err);
+        })
+    })
 };
-

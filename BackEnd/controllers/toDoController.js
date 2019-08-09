@@ -66,34 +66,15 @@ exports.toDo_delete = function(req, res, next) {
 
 
 exports.toDo_update = function(req, res, next){
-    console.log(req.params);
-    console.log(req.body);
-    Trip.findByIdAndUpdate(req.params.trip_id,
-        {"blog._id": req.params.blog_id}
-    )
-        .then(data => res.json(data))
-        .catch(next)
+    Trip.findById(req.params.trip_id, function(err, trip) {
+        var toDo = trip.todos.id(req.params.todo_id).set(req.body);
 
-
-
-    //
-    // Trip.findById(req.params.trip_id, function(err, member) {
-    //     console.log(member);
-    //     if (err)
-    //         return (err);
-    //
-    //     var toUpdate = member.blog.id(req.params.toDo_id);
-    //     toUpdate.update(req.body);
-    //     // toUpdate.title = "GET FUCKED!";
-    //     console.log(toUpdate);
-    //     // toUpdate.update(req.body);
-    //     member.save(function(err) {
-    //         if (err)
-    //             res.send(err);
-    //
-    //         res.json({ message: 'ToDo updated!!!' });
-    //     });
-    //
-    // });
+        trip.save().then(function(savedTrip) {
+            var toReturn = savedTrip.todos.id(req.params.todo_id);
+            res.send(toReturn);
+        }).catch(function(error) {
+            res.status(500).send(err);
+        })
+    })
 };
 
