@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { Link } from "gatsby";
 import { Jumbotron } from "reactstrap";
@@ -9,20 +9,33 @@ import Weather from "../components/Weather/Weather";
 import style from "./styles.module.css";
 
 const IndividualTrips = ({ trip }) => {
+  const [render, setRender] = useState(true);
+  const [indiTrip, setIndiTrip] = useState(trip);
+  console.log(indiTrip);
+  const apiCall = () => {
+    setRender(!render);
+  };
+
+  useEffect(() => {
+    fetch(`http://24.4.98.147:8000/api/trips/${indiTrip._id}`)
+      .then(res => res.json())
+      .then(data => setIndiTrip(data));
+  }, [render]);
+
   return (
     <Layout>
       <SEO title="Trip" />
-      {!trip ? (
+      {!indiTrip ? (
         <div>
           <h3>No trip selected</h3>
           <Link to="/">Please go back and select a trip</Link>
         </div>
       ) : (
         <div>
-          <h1>{trip.title}</h1>
-          <h6>5 Day weather forecase for {trip.location.city}</h6>
-          <Weather zip={trip.location.zip} />
-          <DashBoard individualTrip={trip} />
+          <h1>{indiTrip.title}</h1>
+          <h6>5 Day weather forecase for {indiTrip.location.city}</h6>
+          <Weather zip={indiTrip.location.zip} />
+          <DashBoard individualTrip={indiTrip} apiCall={apiCall} />
         </div>
       )}
     </Layout>

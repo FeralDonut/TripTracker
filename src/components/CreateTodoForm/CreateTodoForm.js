@@ -9,10 +9,10 @@ const CreateTodoForm = props => {
     description,
     editPendingTodo,
     publishTodo,
-    deleteTodo
+    deleteTodo,
+    apiCall
   } = props;
-  console.log("FFFFFF", props);
-  console.log("CREATETODO TripID", tripID);
+
   const handleChange = event => {
     editPendingTodo({ [event.target.name]: event.target.value, id });
   };
@@ -29,9 +29,9 @@ const CreateTodoForm = props => {
       })
     })
       .then(res => res.json())
-      .then(data => console.log("POST RESPONSE", data));
-    // publishTodo(id, description);
-    // })
+      .then(data => console.log("POST RESPONSE", data))
+      .then(apiCall)
+      .then(publishTodo(id, description));
   };
   const handleDelete = e => {
     e.preventDefault();

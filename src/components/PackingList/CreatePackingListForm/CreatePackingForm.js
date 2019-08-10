@@ -1,36 +1,46 @@
-import React from 'react';
-import Form from '../../Form/Form';
-import Input from '../../Inputs/Input';
-
+import React, { useState } from "react";
+import Form from "../../Form/Form";
+import Input from "../../Inputs/Input";
 
 const CreatePackingListForm = props => {
-  const { 
+  const {
     id,
     description,
     editPendingPackingList,
-    publishPackingList, 
-    deletePackingList, 
+    publishPackingList,
+    deletePackingList,
+    tripID,
+    apiCall
   } = props;
 
-  const handleChange = (event) => {
+  const [count, setCount] = useState(1);
+
+  const handleChange = event => {
     editPendingPackingList({ [event.target.name]: event.target.value, id });
   };
-  const createSave = (e) => {
+  const createSave = e => {
     e.preventDefault();
-    // fetch('http://localhost:3000/todo', {
-    //   method: 'post',
-    //   headers: {
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: JSON.stringify({name, description})
-    // }).then(res => {
-      publishPackingList(id, description);
+    console.log("description", description, " count", count);
+    fetch(`http://24.4.98.147:8000/api/trips/${tripID}/packinglist`, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        title: description,
+        count: count
+      })
+    })
+      .then(res => res.json())
+      .then(data => console.log("POST RESPONSE", data))
+      .then(apiCall)
+      .then(publishPackingList(id, count, description));
     // })
-    
   };
-  const handleDelete = (e) => {
+  const handleDelete = e => {
     e.preventDefault();
-    deletePackingList( id );
+    deletePackingList(id);
   };
   return (
     <Form
@@ -44,10 +54,17 @@ const CreatePackingListForm = props => {
         type="text"
         placeholder="description"
         id="description"
-        onChange={e => handleChange(e)} 
+        onChange={e => handleChange(e)}
+      />
+      <Input
+        name="count"
+        type="number"
+        placeholder="count"
+        id="count"
+        onChange={e => setCount(e.target.value)}
       />
     </Form>
   );
-}
+};
 
 export default CreatePackingListForm;

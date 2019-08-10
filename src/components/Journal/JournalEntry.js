@@ -11,7 +11,8 @@ const JournalEntry = props => {
     description,
     tripID,
     selectEntry,
-    activeEntry
+    activeEntry,
+    apiCall
   } = props;
 
   const date = moment(published_on).format("MM DD YYYY");
@@ -20,7 +21,7 @@ const JournalEntry = props => {
   return (
     <Fragment>
       {activeEntry === id ? (
-        <EditJournalForm blogID={id} tripID={tripID} />
+        <EditJournalForm blogID={id} tripID={tripID} apiCall={apiCall} />
       ) : (
         id && (
           <div className={style.entry} onClick={handleSelect}>
