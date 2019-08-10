@@ -22,26 +22,32 @@ const TripCard = props => {
       <CardBody>
         <CardText className={style.location_container}>
           <span className={style.location}>
-            <label>{locations ? locations.city : null}</label>
+            <label className={style.fontWeight}>
+              {locations ? locations.city : null}
+            </label>
             {"City"}
           </span>
           <span className={style.date}>
+            <label className={style.fontWeight}>
+              {moment(startDate).format("MMM Do YYYY")}
+            </label>
             {"Start Date"}
-            <label>{moment(startDate).format("MMM Do YYYY")}</label>
           </span>
         </CardText>
         <CardText>
           <span className={style.date_container}>
             <span className={style.location}>
-              <label>
+              <label className={style.fontWeight}>
                 {locations ? locations.region : null},{" "}
                 {locations ? locations.country : null}
               </label>
               {"Country"}
             </span>
             <span className={style.date}>
+              <label className={style.fontWeight}>
+                {moment(endDate).format("MMM Do YYYY")}
+              </label>
               {"End Date"}
-              <label>{moment(endDate).format("MMM Do YYYY")}</label>
             </span>
           </span>
         </CardText>
