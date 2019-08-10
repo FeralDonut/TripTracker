@@ -11,7 +11,7 @@ import style from "./styles.module.css";
 const IndividualTrips = ({ trip }) => {
   const [render, setRender] = useState(true);
   const [indiTrip, setIndiTrip] = useState(trip);
-  console.log(indiTrip);
+
   const apiCall = () => {
     setRender(!render);
   };
