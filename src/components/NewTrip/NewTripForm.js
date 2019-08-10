@@ -38,17 +38,17 @@ const NewTripForm = () => {
     e.preventDefault();
     setFireAway(!fireAway);
     console.log("FORM FROM SAVE", form);
-    //   fetch(`http://24.4.98.147:8000/api/trips/${tripID}/todos/`, {
-    //     method: "POST",
-    //     headers: {
-    //       Accept: "application/json",
-    //       "Content-Type": "application/json"
-    //     },
-    //     body: form
-    //   })
-    //     .then(res => res.json())
-    //     .then(data => console.log("POST RESPONSE", data))
-    //     .then(apiCall)
+    fetch(`http://24.4.98.147:8000/api/trips/`, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(form)
+    })
+      .then(res => res.json())
+      .then(data => console.log("POST RESPONSE", data));
+    // .then(apiCall);
     //     // .then(publishTodo(id, description));
   };
   const handleDelete = e => {
@@ -63,6 +63,7 @@ const NewTripForm = () => {
       handleDelete={handleDelete}
       disabled={false}
     >
+      <div>Name your trip!</div>
       <Input
         name="title"
         type="text"
@@ -70,6 +71,7 @@ const NewTripForm = () => {
         id="title"
         onChange={e => handleChange(e)}
       />
+      <div>Start Date</div>
       <Input
         name="StartDate"
         type="date"
@@ -77,6 +79,7 @@ const NewTripForm = () => {
         id="Start Date"
         onChange={e => handleChange(e)}
       />
+      <div>End Date</div>
       <Input
         name="EndDate"
         type="date"
@@ -84,11 +87,36 @@ const NewTripForm = () => {
         id="End Date"
         onChange={e => handleChange(e)}
       />
+      <div>City</div>
       <Input
         name="city"
         type="text"
         placeholder="City"
         id="City"
+        onChange={e => handleLocationChange(e)}
+      />
+      <div>State/Province</div>
+      <Input
+        name="region"
+        type="text"
+        placeholder="State/Province"
+        id="region"
+        onChange={e => handleLocationChange(e)}
+      />
+      <div>Country</div>
+      <Input
+        name="country"
+        type="text"
+        placeholder="Country"
+        id="country"
+        onChange={e => handleLocationChange(e)}
+      />
+      <div>Zip/Postal Code</div>
+      <Input
+        name="zip"
+        type="text"
+        placeholder="Zip/Postal"
+        id="zip"
         onChange={e => handleLocationChange(e)}
       />
     </Form>
