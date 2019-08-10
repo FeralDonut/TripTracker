@@ -11,7 +11,8 @@ const CreateEntryForm = props => {
     description,
     editPendingEntry,
     publishEntry,
-    deleteEntry
+    deleteEntry,
+    apiCall
   } = props;
 
   const handleChange = event => {
@@ -34,7 +35,8 @@ const CreateEntryForm = props => {
       })
     })
       .then(res => res.json())
-      .then(data => console.log("POST RESPONSE", data));
+      .then(data => console.log("POST RESPONSE", data))
+      .then(apiCall);
     //{
     // const dailyData = data.list.filter(reading =>
     //   reading.dt_txt.includes("18:00:00")

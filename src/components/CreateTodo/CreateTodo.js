@@ -4,12 +4,12 @@ import Button from "../Buttons/Button";
 import style from "./CreateTodoStyles.module.css";
 
 const CreateTodo = props => {
-  const { id, tripID, addTodo } = props;
+  const { id, tripID, addTodo, apiCall } = props;
 
   return (
     <div>
       {id ? (
-        <CreateTodoForm tripID={tripID} />
+        <CreateTodoForm tripID={tripID} apiCall={apiCall} />
       ) : (
         <Button
           className={style.create_todo}

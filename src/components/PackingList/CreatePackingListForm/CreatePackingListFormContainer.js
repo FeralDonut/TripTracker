@@ -1,10 +1,14 @@
-import { connect } from 'react-redux';
-import { editPendingPackingList, publishPackingList, deleteItem } from '../../Redux/actions/actions';
-import CreatePackingForm from './CreatePackingForm';
+import { connect } from "react-redux";
+import {
+  editPendingPackingList,
+  publishPackingList,
+  deleteItem
+} from "../../Redux/actions/actions";
+import CreatePackingForm from "./CreatePackingForm";
 
 const mapStateToProps = state => ({
   id: state.pendingPackingList.id,
-  description: state.pendingPackingList.description,
+  description: state.pendingPackingList.description
 });
 
 const mapDisptachToProps = {
@@ -13,4 +17,7 @@ const mapDisptachToProps = {
   deleteItem
 };
 
-export default connect(mapStateToProps, mapDisptachToProps)(CreatePackingForm);
+export default connect(
+  mapStateToProps,
+  mapDisptachToProps
+)(CreatePackingForm);

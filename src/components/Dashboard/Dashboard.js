@@ -10,7 +10,7 @@ import CreateEntry from "../Journal/CreateEntryContainer";
 import JournalList from "../Journal/JournalListContainer";
 
 const Dashboard = props => {
-  const { individualTrip, activeTab, setActiveTab } = props;
+  const { individualTrip, activeTab, setActiveTab, apiCall } = props;
   console.log("DAHBOARD", individualTrip);
   const tripID = individualTrip._id;
 
@@ -49,21 +49,28 @@ const Dashboard = props => {
       <Nav tabs>{tabRouting}</Nav>
       <TabContent activeTab={activeTab}>
         <TabPane tabId="attractions">
-          <TodoList tripID={tripID} todos={individualTrip.todos} />
-          <CreateTodo tripID={tripID} />
+          <TodoList
+            tripID={tripID}
+            todos={individualTrip.todos}
+            apiCall={apiCall}
+          />
+          <CreateTodo tripID={tripID} apiCall={apiCall} />
         </TabPane>
         <TabPane tabId="eateries">
-          <EateriesList restaurants={individualTrip.restaurants} />
-          <CreateEatery />
+          <EateriesList
+            restaurants={individualTrip.restaurants}
+            apiCall={apiCall}
+          />
+          <CreateEatery tripID={tripID} apiCall={apiCall} />
         </TabPane>
         <TabPane tabId="journal">
-          <CreateEntry tripID={tripID} />
-          <JournalList posts={individualTrip} />
+          <CreateEntry tripID={tripID} apiCall={apiCall} />
+          <JournalList posts={individualTrip} apiCall={apiCall} />
         </TabPane>
         <TabPane tabId="info">Important Information</TabPane>
         <TabPane tabId="packing">
-          <PackingList list={individualTrip.packing_list} />
-          <CreatePackingList />
+          <PackingList list={individualTrip.packing_list} apiCall={apiCall} />
+          <CreatePackingList tripID={tripID} apiCall={apiCall} />
         </TabPane>
       </TabContent>
       {/* </div> */}

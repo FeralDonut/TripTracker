@@ -1,21 +1,22 @@
-import React from 'react';
-import CreateEateryForm from '../CreateEateryForm/CreateEateryFormContainer';
-import Button from '../../Buttons/Button';
-import style from './CreateEateryStyles.module.css';
+import React from "react";
+import CreateEateryForm from "../CreateEateryForm/CreateEateryFormContainer";
+import Button from "../../Buttons/Button";
+import style from "./CreateEateryStyles.module.css";
 
 const CreateEatery = props => {
-  const { id , addEatery} = props;
+  const { id, addEatery, tripID, apiCall } = props;
 
   return (
     <div>
-      {
-        id ? <CreateEateryForm />
-        : <Button
-            className={style.create_eatery}
-            onClick={() => addEatery()}
-            text="+"
-          />
-      }
+      {id ? (
+        <CreateEateryForm tripID={tripID} apiCall={apiCall} />
+      ) : (
+        <Button
+          className={style.create_eatery}
+          onClick={() => addEatery()}
+          text="+"
+        />
+      )}
     </div>
   );
 };

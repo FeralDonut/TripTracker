@@ -1,36 +1,41 @@
-import React from 'react';
-import Form from '../../Form/Form';
-import Input from '../../Inputs/Input';
-
+import React from "react";
+import Form from "../../Form/Form";
+import Input from "../../Inputs/Input";
 
 const CreateEateryForm = props => {
-  const { 
+  const {
     id,
     description,
     editPendingEatery,
-    publishEatery, 
-    deleteEatery 
+    publishEatery,
+    deleteEatery,
+    tripID,
+    apiCall
   } = props;
 
-  const handleChange = (event) => {
+  const handleChange = event => {
     editPendingEatery({ [event.target.name]: event.target.value, id });
   };
-  const createSave = (e) => {
+  const createSave = e => {
     e.preventDefault();
-    // fetch('http://localhost:3000/todo', {
-    //   method: 'post',
-    //   headers: {
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: JSON.stringify({name, description})
-    // }).then(res => {
-      publishEatery(id, description);
-    // })
-    
+    fetch(`http://24.4.98.147:8000/api/trips/${tripID}/`, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        title: description
+      })
+    })
+      .then(res => res.json())
+      .then(data => console.log("POST RESPONSE", data))
+      .then(apiCall)
+      .then(publishEatery(id, description));
   };
-  const handleDelete = (e) => {
+  const handleDelete = e => {
     e.preventDefault();
-    deleteEatery( id );
+    deleteEatery(id);
   };
   return (
     <Form
@@ -44,10 +49,10 @@ const CreateEateryForm = props => {
         type="text"
         placeholder="description"
         id="description"
-        onChange={e => handleChange(e)} 
+        onChange={e => handleChange(e)}
       />
     </Form>
   );
-}
+};
 
 export default CreateEateryForm;
