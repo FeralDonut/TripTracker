@@ -1,15 +1,14 @@
-import React from 'react';
-import TripCard from './TripCard';
-import { Link } from 'gatsby';
+import React from "react";
+import TripCard from "./TripCard";
+import { Link } from "gatsby";
 import style from "./TripCardStyle.module.css";
 
-const TripList = ({trips, setIndividualTrip}) => {
-
+const TripList = ({ trips, setIndividualTrip }) => {
   const handleClick = trip => {
-    setIndividualTrip(trip)
-  }
-  
-  const myTrips = trips.map(trip =>(
+    setIndividualTrip(trip);
+  };
+
+  const myTrips = trips.map(trip => (
     <TripCard
       key={trip._id}
       id={trip._id}
@@ -19,18 +18,19 @@ const TripList = ({trips, setIndividualTrip}) => {
       description={trip.description}
       locations={trip.location}
       onclick={() => handleClick(trip)}
-    />    
+    />
   ));
 
-  
-  
-  return(
-    <div >
-      {(trips.length === 0) ? (
+  return (
+    <div>
+      {trips.length === 0 ? (
         <div>Currently No Trips</div>
-      ):(
+      ) : (
         <div>
-          <Link to="/individualTrip" style={{textDecoration: 'none', color: 'black'}}>
+          <Link
+            to="/individualTrip"
+            style={{ textDecoration: "none", color: "black" }}
+          >
             {myTrips}
           </Link>
         </div>
@@ -39,4 +39,4 @@ const TripList = ({trips, setIndividualTrip}) => {
   );
 };
 
-export default TripList
+export default TripList;

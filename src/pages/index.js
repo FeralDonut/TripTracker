@@ -52,7 +52,7 @@ const IndexPage = () => {
               />
             </div>
           </div>
-          <p>Use the navigation bar at the top of the page to get started.</p>
+          <p>Below are your current and/or upcoming trips!</p>
         </Jumbotron>
         {!trips.length ? <div>loading</div> : <div>{upcomingTrips(trips)}</div>}
       </div>

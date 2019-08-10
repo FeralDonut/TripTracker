@@ -15,7 +15,7 @@ const TripCard = props => {
   } = props;
 
   return (
-    <Card className="trip-card" key={id} onClick={onclick}>
+    <Card className={style.tripcard} key={id} onClick={onclick}>
       <CardHeader className={style.card_header}>
         <Alert color={""}>{title}</Alert>
       </CardHeader>
