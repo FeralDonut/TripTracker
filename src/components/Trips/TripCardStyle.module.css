@@ -1,5 +1,6 @@
-.card_header{
+.card_header {
   padding: 0;
+  font-weight: 700;
 }
 
 .location_container {
@@ -21,4 +22,12 @@
 .date_container {
   display: flex;
   justify-content: space-between;
+}
+
+.tripcard {
+  margin: 20px;
+}
+
+.fontWeight {
+  font-weight: 700;
 }
