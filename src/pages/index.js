@@ -23,15 +23,12 @@ const IndexPage = () => {
   }, []);
 
   const upcomingTrips = trips => {
-    console.log("trips", trips);
-
-    const abc = trips.filter(
+    const currentUpcomingTrips = trips.filter(
       trip =>
         moment(trip.end_date).format("MMDDYYYY") >
         moment(date).format("MMDDYYYY")
     );
-    console.log(abc);
-    return <TripList trips={abc} />;
+    return <TripList trips={currentUpcomingTrips} />;
   };
 
   return (

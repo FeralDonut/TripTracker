@@ -1,0 +1,21 @@
+.datecontainer {
+  display: flex;
+  margin: 20px 0;
+}
+
+.datetoinput {
+  display: flex;
+  flex-direction: column;
+  width: -webkit-fill-available;
+}
+
+.citystatecontainer {
+  display: flex;
+  margin: 20px 0;
+}
+
+.locationinput {
+  display: flex;
+  flex-direction: column;
+  width: -webkit-fill-available;
+}
