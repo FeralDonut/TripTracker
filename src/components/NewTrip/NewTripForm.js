@@ -8,8 +8,8 @@ const NewTripForm = () => {
   const [form, setForm] = useState({
     title: "",
     description: "",
-    StartDate: new Date(),
-    EndDate: new Date(),
+    StartDate: null,
+    EndDate: null,
     Location: {}
   });
   const [location, setLocation] = useState({
@@ -24,21 +24,17 @@ const NewTripForm = () => {
   const handleLocationChange = e => {
     const { name, value } = e.target;
     setLocation({ ...location, [name]: value });
-    console.log("LOCATION ON CHANGE", location);
     setForm({ ...form, ["Location"]: location });
-    console.log("FORM WITH LOCATION", form);
   };
 
   const handleChange = e => {
     const { name, value } = e.target;
     setForm({ ...form, [name]: value });
-    console.log("FORM ON CHANGE", form);
   };
 
   const createSave = e => {
     e.preventDefault();
     setFireAway(!fireAway);
-    console.log("FORM FROM SAVE", form);
     fetch(`http://24.4.98.147:8000/api/trips/`, {
       method: "POST",
       headers: {
@@ -62,7 +58,7 @@ const NewTripForm = () => {
       legend="Let's Plan a Trip!"
       handleSave={createSave}
       handleDelete={handleDelete}
-      disabled={false}
+      disabled={!form.title}
     >
       <div>Name your trip!</div>
       <Input
