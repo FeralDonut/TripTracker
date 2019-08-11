@@ -41,8 +41,11 @@ const EditJournalForm = props => {
     editEntry({ [e.target.name]: e.target.value, id });
   };
 
-  const handleDeselect = () => {
-    // deselectEntry();
+  const handleDeselect = event => {
+    if (event.relatedTarget.id === "gatsby-focus-wrapper") {
+      deselectEntry();
+    }
+    return;
   };
 
   return (

@@ -8,10 +8,23 @@ import IconButton from "@material-ui/core/IconButton";
 import DeleteIcon from "@material-ui/icons/Delete";
 
 const TodoList = ({ todos, tripID, deleteTodo, apiCall }) => {
-  const handleClick = event => {};
+  const handleClick = todo => {
+    fetch(`http://24.4.98.147:8000/api/trips/${tripID}/todos/${todo._id}`, {
+      method: "PATCH",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        completed: !todo.completed
+      })
+    })
+      .then(res => res.json())
+      .then(data => console.log("POST RESPONSE", data))
+      .then(apiCall);
+  };
 
   const handleDelete = todoID => {
-    console.log("delete todo", todoID);
     fetch(`http://24.4.98.147:8000/api/trips/${tripID}/todos/${todoID}`, {
       method: "delete"
     }).then(response =>
@@ -32,7 +45,7 @@ const TodoList = ({ todos, tripID, deleteTodo, apiCall }) => {
             checked={todo.completed}
             tabIndex={-1}
             disableRipple
-            onClick={() => handleClick()}
+            onClick={() => handleClick(todo)}
           />
           <ListItemText primary={todo.title} />
           <ListItemSecondaryAction>
