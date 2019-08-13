@@ -8,13 +8,13 @@ const NewTripForm = () => {
   const [form, setForm] = useState({
     title: "",
     description: "",
-    StartDate: null,
-    EndDate: null,
-    Location: {}
+    start_date: null,
+    end_date: null,
+    location: {}
   });
   const [location, setLocation] = useState({
-    Line1: "",
-    Line2: "",
+    line1: "",
+    line2: "",
     city: "",
     region: "",
     zip: "",
@@ -24,7 +24,7 @@ const NewTripForm = () => {
   const handleLocationChange = e => {
     const { name, value } = e.target;
     setLocation({ ...location, [name]: value });
-    setForm({ ...form, ["Location"]: location });
+    setForm({ ...form, ["location"]: location });
   };
 
   const handleChange = e => {
@@ -33,6 +33,7 @@ const NewTripForm = () => {
   };
 
   const createSave = e => {
+    console.log(JSON.stringify(form));
     e.preventDefault();
     setFireAway(!fireAway);
     fetch(`http://24.4.98.147:8000/api/trips/`, {
@@ -80,7 +81,7 @@ const NewTripForm = () => {
         <div className={style.datetoinput}>
           <div>Start Date</div>
           <Input
-            name="StartDate"
+            name="start_date"
             type="date"
             placeholder="Start Date"
             id="Start Date"
@@ -90,7 +91,7 @@ const NewTripForm = () => {
         <div className={style.datetoinput}>
           <div>End Date</div>
           <Input
-            name="EndDate"
+            name="end_date"
             type="date"
             placeholder="End Date"
             id="End Date"
