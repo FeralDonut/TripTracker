@@ -7,6 +7,7 @@ const EditJournalForm = props => {
   const {
     blogID,
     tripID,
+    apiCall,
     deleteEntry,
     editEntry,
     editActiveEntry,
@@ -17,20 +18,35 @@ const EditJournalForm = props => {
 
   const editSave = e => {
     e.preventDefault();
-    updateEntry(id, title, date, description);
+    fetch(`http://24.4.98.147:8000/api/trips/${tripID}/posts/${blogID}`, {
+      method: "PATCH",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        title: title,
+        body: description
+      })
+    })
+      .then(res => res.json())
+      .then(data => console.log("POST RESPONSE", data))
+      .then(apiCall);
   };
 
   const handleDelete = e => {
     e.preventDefault();
+    console.log("EDITJOURNALHANDLEDELETE");
 
     fetch(`http://24.4.98.147:8000/api/trips/${tripID}/posts/${blogID}`, {
       method: "delete"
-    }).then(response =>
-      response.json().then(json => {
-        return json;
-      })
-    );
-    // deleteEntry(blogID);
+    })
+      .then(response =>
+        response.json().then(json => {
+          console.log(json);
+        })
+      )
+      .then(apiCall);
   };
 
   const handleChange = e => {

@@ -59,6 +59,7 @@ const Dashboard = props => {
         <TabPane tabId="eateries">
           <EateriesList
             restaurants={individualTrip.restaurants}
+            tripID={tripID}
             apiCall={apiCall}
           />
           <CreateEatery tripID={tripID} apiCall={apiCall} />
@@ -69,7 +70,11 @@ const Dashboard = props => {
         </TabPane>
         <TabPane tabId="info">Important Information</TabPane>
         <TabPane tabId="packing">
-          <PackingList list={individualTrip.packing_list} apiCall={apiCall} />
+          <PackingList
+            list={individualTrip.packing_list}
+            tripID={tripID}
+            apiCall={apiCall}
+          />
           <CreatePackingList tripID={tripID} apiCall={apiCall} />
         </TabPane>
       </TabContent>

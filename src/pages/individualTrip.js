@@ -33,7 +33,10 @@ const IndividualTrips = ({ trip }) => {
       ) : (
         <div>
           <h1>{indiTrip.title}</h1>
-          <h6>5 Day weather forecase for {indiTrip.location.city}</h6>
+          <h6>
+            5 Day weather forecast for {indiTrip.location.city},{" "}
+            {indiTrip.location.state} {indiTrip.location.country}
+          </h6>
           <Weather zip={indiTrip.location.zip} />
           <DashBoard individualTrip={indiTrip} apiCall={apiCall} />
         </div>

@@ -18,14 +18,14 @@ const CreateEateryForm = props => {
   };
   const createSave = e => {
     e.preventDefault();
-    fetch(`http://24.4.98.147:8000/api/trips/${tripID}/`, {
+    fetch(`http://24.4.98.147:8000/api/trips/${tripID}/restaurants`, {
       method: "POST",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        title: description
+        name: description
       })
     })
       .then(res => res.json())
