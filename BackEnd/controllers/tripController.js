@@ -7,8 +7,6 @@ exports.trip_list = function(req, res, next) {
 };
 
 exports.trip_create = function(req, res, next){
-    console.log("you are in trip create!");
-    console.log(req.body);
     if(req.body.title){
         Trip.create(req.body)
             .then(data => res.json(data))
@@ -21,6 +19,7 @@ exports.trip_create = function(req, res, next){
 };
 
 exports.trip_delete = function(req, res, next) {
+    console.log(req.body);
     Trip.remove({ _id: req.body.id }, function(err) {
         if (!err) {
             message.type = 'notification!';
