@@ -19,14 +19,8 @@ exports.trip_create = function(req, res, next){
 };
 
 exports.trip_delete = function(req, res, next) {
-    console.log(req.body);
-    Trip.deleteOne({ _id: req.body.id }, function(err) {
-        if (!err) {
-            message.type = 'notification!';
-        }
-        else {
-            message.type = 'error';
-        }
+    Trip.deleteOne({ _id: req.params.trip_id }, function(err) {
+		res.end('{"success" : "Deleted Successfully", "status" : 200}');
     });
 };
 
