@@ -31,3 +31,19 @@
 .fontWeight {
   font-weight: 700;
 }
+
+.trip_icons_container {
+  color: var(--color-main);
+  display: flex;
+  justify-content: flex-end;
+}
+
+.delete_trip {
+  padding: 0 10px;
+  cursor: pointer;
+}
+
+.edit_trip {
+  padding: 0 10px;
+  cursor: pointer;
+}

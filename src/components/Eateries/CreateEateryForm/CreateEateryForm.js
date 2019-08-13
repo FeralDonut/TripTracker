@@ -25,7 +25,7 @@ const CreateEateryForm = props => {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        title: description
+        name: description
       })
     })
       .then(res => res.json())

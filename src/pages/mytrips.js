@@ -4,13 +4,7 @@ import Layout from "../components/layout";
 import SEO from "../components/seo";
 import { Jumbotron } from "reactstrap";
 import style from "./styles.module.css";
-import user from "../utils/mockData";
 import TripList from "../components/Trips/TripListContainer";
-import { library } from "@fortawesome/fontawesome-svg-core";
-import { faUserAstronaut } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
-library.add(faUserAstronaut);
 
 const SecondPage = () => {
   const [trips, setTrips] = useState([]);
@@ -19,8 +13,6 @@ const SecondPage = () => {
       .then(res => res.json())
       .then(data => setTrips(data));
   }, []);
-
-  console.log(trips);
 
   return (
     <Layout>

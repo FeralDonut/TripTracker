@@ -18,7 +18,7 @@ const EateriesList = ({ restaurants, tripID, apiCall }) => {
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          completed: !eatery.completed
+          visited: !eatery.visited
         })
       }
     )
@@ -31,7 +31,7 @@ const EateriesList = ({ restaurants, tripID, apiCall }) => {
     fetch(
       `http://24.4.98.147:8000/api/trips/${tripID}/restaurants/${eateryID}`,
       {
-        method: "delete"
+        method: "DELETE"
       }
     ).then(response =>
       response

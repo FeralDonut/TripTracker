@@ -21,7 +21,7 @@ const CreatePackingListForm = props => {
   const createSave = e => {
     e.preventDefault();
     console.log("description", description, " count", count);
-    fetch(`http://24.4.98.147:8000/api/trips/${tripID}/packinglist`, {
+    fetch(`http://24.4.98.147:8000/api/trips/${tripID}/packinglist/`, {
       method: "POST",
       headers: {
         Accept: "application/json",
