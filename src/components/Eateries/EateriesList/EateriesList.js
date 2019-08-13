@@ -58,7 +58,7 @@ const EateriesList = ({ restaurants, tripID, apiCall }) => {
             <IconButton
               aria-label="Delete"
               onClick={() => {
-                handleDelete(eatery.id);
+                handleDelete(eatery._id);
               }}
             >
               <DeleteIcon />
