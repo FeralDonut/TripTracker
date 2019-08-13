@@ -20,7 +20,7 @@ exports.trip_create = function(req, res, next){
 
 exports.trip_delete = function(req, res, next) {
     console.log(req.body);
-    Trip.remove({ _id: req.body.id }, function(err) {
+    Trip.deleteOne({ _id: req.body.id }, function(err) {
         if (!err) {
             message.type = 'notification!';
         }
