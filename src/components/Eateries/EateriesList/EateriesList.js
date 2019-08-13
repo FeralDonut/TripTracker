@@ -51,7 +51,7 @@ const EateriesList = ({ restaurants, tripID, apiCall }) => {
             checked={eatery.visited}
             tabIndex={-1}
             disableRipple
-            onClick={() => handleClick(eatery._id)}
+            onClick={() => handleClick(eatery)}
           />
           <ListItemText primary={eatery.name} />
           <ListItemSecondaryAction>
