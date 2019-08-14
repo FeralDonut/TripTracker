@@ -2,7 +2,7 @@ import React from "react";
 import JournalEntry from "./JournalEntryContainer";
 import style from "./JournalListStyles.modules.css";
 
-const JournalList = ({ posts, apiCall }) => {
+const JournalList = ({ posts, apiCall, tripID }) => {
   console.log("const tripID = posts._id");
 
   const entries = posts.blog.map(entry => (
@@ -12,7 +12,7 @@ const JournalList = ({ posts, apiCall }) => {
       title={entry.title}
       published_on={entry.published_on}
       description={entry.body}
-      tripID={entry._id}
+      tripID={tripID}
       apiCall={apiCall}
     />
   ));

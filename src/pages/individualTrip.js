@@ -17,9 +17,11 @@ const IndividualTrips = ({ trip }) => {
   };
 
   useEffect(() => {
-    fetch(`http://24.4.98.147:8000/api/trips/${indiTrip._id}`)
-      .then(res => res.json())
-      .then(data => setIndiTrip(data));
+    if (indiTrip) {
+      fetch(`http://24.4.98.147:8000/api/trips/${indiTrip._id}`)
+        .then(res => res.json())
+        .then(data => setIndiTrip(data));
+    }
   }, [render]);
 
   return (
@@ -33,11 +35,8 @@ const IndividualTrips = ({ trip }) => {
       ) : (
         <div>
           <h1>{indiTrip.title}</h1>
-          <h6>
-            5 Day weather forecast for {indiTrip.location.city},{" "}
-            {indiTrip.location.state} {indiTrip.location.country}
-          </h6>
-          <Weather zip={indiTrip.location.zip} />
+
+          <Weather zip={indiTrip.location.zip} location={indiTrip.location} />
           <DashBoard individualTrip={indiTrip} apiCall={apiCall} />
         </div>
       )}

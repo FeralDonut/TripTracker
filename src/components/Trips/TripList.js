@@ -3,7 +3,7 @@ import TripCard from "./TripCard";
 import { Link } from "gatsby";
 import style from "./TripCardStyle.module.css";
 
-const TripList = ({ trips, setIndividualTrip }) => {
+const TripList = ({ trips, setIndividualTrip, triggerRerender }) => {
   const handleClick = trip => {
     setIndividualTrip(trip);
   };
@@ -18,6 +18,7 @@ const TripList = ({ trips, setIndividualTrip }) => {
       description={trip.description}
       locations={trip.location}
       onclick={() => handleClick(trip)}
+      triggerRerender={triggerRerender}
     />
   ));
 
@@ -27,12 +28,12 @@ const TripList = ({ trips, setIndividualTrip }) => {
         <div>Currently No Trips</div>
       ) : (
         <div>
-          <Link
+          {/* <Link
             to="/individualTrip"
             style={{ textDecoration: "none", color: "black" }}
-          >
-            {myTrips}
-          </Link>
+          > */}
+          {myTrips}
+          {/* </Link> */}
         </div>
       )}
     </div>

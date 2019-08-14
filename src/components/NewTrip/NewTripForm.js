@@ -3,18 +3,17 @@ import Form from "../Form/Form";
 import Input from "../Inputs/Input";
 import style from "./NewTripFormStyle.module.css";
 
-const NewTripForm = () => {
-  const [fireAway, setFireAway] = useState(false);
+const NewTripForm = ({ newTripSaved, setIndividualTrip }) => {
   const [form, setForm] = useState({
     title: "",
     description: "",
-    StartDate: null,
-    EndDate: null,
-    Location: {}
+    start_date: null,
+    end_date: null,
+    location: {}
   });
   const [location, setLocation] = useState({
-    Line1: "",
-    Line2: "",
+    line1: "",
+    line2: "",
     city: "",
     region: "",
     zip: "",
@@ -24,7 +23,7 @@ const NewTripForm = () => {
   const handleLocationChange = e => {
     const { name, value } = e.target;
     setLocation({ ...location, [name]: value });
-    setForm({ ...form, ["Location"]: location });
+    setForm({ ...form, ["location"]: location });
   };
 
   const handleChange = e => {
@@ -33,8 +32,8 @@ const NewTripForm = () => {
   };
 
   const createSave = e => {
+    console.log(JSON.stringify(form));
     e.preventDefault();
-    setFireAway(!fireAway);
     fetch(`http://24.4.98.147:8000/api/trips/`, {
       method: "POST",
       headers: {
@@ -44,15 +43,15 @@ const NewTripForm = () => {
       body: JSON.stringify(form)
     })
       .then(res => res.json())
-      .then(data => console.log("POST RESPONSE", data));
-    // .then(apiCall);
-    //     // .then(publishTodo(id, description));
+      .then(data => {
+        setIndividualTrip(data);
+      })
+      .then(newTripSaved);
   };
   const handleDelete = e => {
     e.preventDefault();
     // deleteTodo(id);
   };
-
   return (
     <Form
       legend="Let's Plan a Trip!"
@@ -60,7 +59,12 @@ const NewTripForm = () => {
       handleDelete={handleDelete}
       disabled={!form.title}
     >
-      <div>Name your trip!</div>
+      <div>
+        Name your trip
+        <span aria-hidden="true" className={style.required}>
+          *
+        </span>
+      </div>
       <Input
         name="title"
         type="text"
@@ -80,7 +84,7 @@ const NewTripForm = () => {
         <div className={style.datetoinput}>
           <div>Start Date</div>
           <Input
-            name="StartDate"
+            name="start_date"
             type="date"
             placeholder="Start Date"
             id="Start Date"
@@ -90,7 +94,7 @@ const NewTripForm = () => {
         <div className={style.datetoinput}>
           <div>End Date</div>
           <Input
-            name="EndDate"
+            name="end_date"
             type="date"
             placeholder="End Date"
             id="End Date"
@@ -100,12 +104,17 @@ const NewTripForm = () => {
       </div>
       <div className={style.citystatecontainer}>
         <div className={style.locationinput}>
-          <div>City</div>
+          <div>
+            City
+            <span aria-hidden="true" className={style.required}>
+              *
+            </span>
+          </div>
           <Input
             name="city"
             type="text"
             placeholder="City"
-            id="City"
+            id="city"
             onChange={e => handleLocationChange(e)}
           />
         </div>
@@ -121,7 +130,12 @@ const NewTripForm = () => {
         </div>
         {/* </div> */}
         <div className={style.locationinput}>
-          <div>Country</div>
+          <div>
+            Country
+            <span aria-hidden="true" className={style.required}>
+              *
+            </span>
+          </div>
           <Input
             name="country"
             type="text"
@@ -131,7 +145,12 @@ const NewTripForm = () => {
           />
         </div>
         <div className={style.locationinput}>
-          <div>Zip/Postal Code</div>
+          <div>
+            Zip/Postal Code
+            <span aria-hidden="true" className={style.required}>
+              *
+            </span>
+          </div>
           <Input
             name="zip"
             type="text"
@@ -140,6 +159,12 @@ const NewTripForm = () => {
             onChange={e => handleLocationChange(e)}
           />
         </div>
+      </div>
+      <div>
+        Required Field
+        <span aria-hidden="true" className={style.required}>
+          *
+        </span>
       </div>
     </Form>
   );

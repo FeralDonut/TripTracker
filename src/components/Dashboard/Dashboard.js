@@ -22,7 +22,7 @@ const Dashboard = props => {
     { tabName: "attractions", tabText: "Things To Do" },
     { tabName: "eateries", tabText: "Places To Eat" },
     { tabName: "journal", tabText: "Journal" },
-    { tabName: "info", tabText: "Important Info" },
+    // { tabName: "info", tabText: "Important Info" },
     { tabName: "packing", tabText: "Packing List" }
   ];
   const tabRouting = tabLinks.map(tabLink => (
@@ -40,12 +40,6 @@ const Dashboard = props => {
   ));
   return (
     <div>
-      {/* {!(users.length && teams.length) ? (
-            <div className={'dashboard-loader'}>
-              <Spinner color="primary"/>
-            </div>
-        ) : ( */}
-      {/* <div className="dashboard-tabtable"> */}
       <Nav tabs>{tabRouting}</Nav>
       <TabContent activeTab={activeTab}>
         <TabPane tabId="attractions">
@@ -66,7 +60,11 @@ const Dashboard = props => {
         </TabPane>
         <TabPane tabId="journal">
           <CreateEntry tripID={tripID} apiCall={apiCall} />
-          <JournalList posts={individualTrip} apiCall={apiCall} />
+          <JournalList
+            tripID={tripID}
+            posts={individualTrip}
+            apiCall={apiCall}
+          />
         </TabPane>
         <TabPane tabId="info">Important Information</TabPane>
         <TabPane tabId="packing">
