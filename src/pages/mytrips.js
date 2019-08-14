@@ -14,7 +14,7 @@ const SecondPage = () => {
     fetch(`http://24.4.98.147:8000/api/trips/`)
       .then(res => res.json())
       .then(data => setTrips(data));
-  }, []);
+  }, [rerender]);
   const triggerRerender = () => {
     setRerender(!rerender);
   };
