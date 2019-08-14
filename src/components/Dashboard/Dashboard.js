@@ -40,12 +40,6 @@ const Dashboard = props => {
   ));
   return (
     <div>
-      {/* {!(users.length && teams.length) ? (
-            <div className={'dashboard-loader'}>
-              <Spinner color="primary"/>
-            </div>
-        ) : ( */}
-      {/* <div className="dashboard-tabtable"> */}
       <Nav tabs>{tabRouting}</Nav>
       <TabContent activeTab={activeTab}>
         <TabPane tabId="attractions">

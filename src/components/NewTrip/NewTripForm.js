@@ -3,8 +3,7 @@ import Form from "../Form/Form";
 import Input from "../Inputs/Input";
 import style from "./NewTripFormStyle.module.css";
 
-const NewTripForm = () => {
-  const [fireAway, setFireAway] = useState(false);
+const NewTripForm = ({ newTripSaved, setIndividualTrip }) => {
   const [form, setForm] = useState({
     title: "",
     description: "",
@@ -35,7 +34,6 @@ const NewTripForm = () => {
   const createSave = e => {
     console.log(JSON.stringify(form));
     e.preventDefault();
-    setFireAway(!fireAway);
     fetch(`http://24.4.98.147:8000/api/trips/`, {
       method: "POST",
       headers: {
@@ -45,9 +43,10 @@ const NewTripForm = () => {
       body: JSON.stringify(form)
     })
       .then(res => res.json())
-      .then(data => console.log("POST RESPONSE", data));
-    // .then(apiCall);
-    //     // .then(publishTodo(id, description));
+      .then(data => {
+        setIndividualTrip(data);
+      })
+      .then(newTripSaved);
   };
   const handleDelete = e => {
     e.preventDefault();
