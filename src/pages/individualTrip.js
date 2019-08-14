@@ -17,9 +17,11 @@ const IndividualTrips = ({ trip }) => {
   };
 
   useEffect(() => {
-    fetch(`http://24.4.98.147:8000/api/trips/${indiTrip._id}`)
-      .then(res => res.json())
-      .then(data => setIndiTrip(data));
+    if (indiTrip) {
+      fetch(`http://24.4.98.147:8000/api/trips/${indiTrip._id}`)
+        .then(res => res.json())
+        .then(data => setIndiTrip(data));
+    }
   }, [render]);
 
   return (
