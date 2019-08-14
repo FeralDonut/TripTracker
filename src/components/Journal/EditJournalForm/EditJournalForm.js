@@ -29,9 +29,13 @@ const EditJournalForm = props => {
         body: description
       })
     })
-      .then(res => res.json())
-      .then(data => console.log("POST RESPONSE", data))
-      .then(apiCall);
+      .then(response =>
+        response.json().then(json => {
+          console.log(json);
+        })
+      )
+      .then(apiCall)
+      .then(deselectEntry);
   };
 
   const handleDelete = e => {
@@ -46,7 +50,8 @@ const EditJournalForm = props => {
           console.log(json);
         })
       )
-      .then(apiCall);
+      .then(apiCall)
+      .then(deselectEntry);
   };
 
   const handleChange = e => {
