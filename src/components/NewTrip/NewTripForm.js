@@ -53,7 +53,6 @@ const NewTripForm = () => {
     e.preventDefault();
     // deleteTodo(id);
   };
-
   return (
     <Form
       legend="Let's Plan a Trip!"
@@ -61,7 +60,12 @@ const NewTripForm = () => {
       handleDelete={handleDelete}
       disabled={!form.title}
     >
-      <div>Name your trip!</div>
+      <div>
+        Name your trip
+        <span aria-hidden="true" className={style.required}>
+          *
+        </span>
+      </div>
       <Input
         name="title"
         type="text"
@@ -101,12 +105,17 @@ const NewTripForm = () => {
       </div>
       <div className={style.citystatecontainer}>
         <div className={style.locationinput}>
-          <div>City</div>
+          <div>
+            City
+            <span aria-hidden="true" className={style.required}>
+              *
+            </span>
+          </div>
           <Input
             name="city"
             type="text"
             placeholder="City"
-            id="City"
+            id="city"
             onChange={e => handleLocationChange(e)}
           />
         </div>
@@ -122,7 +131,12 @@ const NewTripForm = () => {
         </div>
         {/* </div> */}
         <div className={style.locationinput}>
-          <div>Country</div>
+          <div>
+            Country
+            <span aria-hidden="true" className={style.required}>
+              *
+            </span>
+          </div>
           <Input
             name="country"
             type="text"
@@ -132,7 +146,12 @@ const NewTripForm = () => {
           />
         </div>
         <div className={style.locationinput}>
-          <div>Zip/Postal Code</div>
+          <div>
+            Zip/Postal Code
+            <span aria-hidden="true" className={style.required}>
+              *
+            </span>
+          </div>
           <Input
             name="zip"
             type="text"
@@ -141,6 +160,12 @@ const NewTripForm = () => {
             onChange={e => handleLocationChange(e)}
           />
         </div>
+      </div>
+      <div>
+        Required Field
+        <span aria-hidden="true" className={style.required}>
+          *
+        </span>
       </div>
     </Form>
   );

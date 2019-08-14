@@ -15,20 +15,29 @@ library.add(faUserAstronaut);
 
 const IndexPage = () => {
   const [trips, setTrips] = useState([]);
+  const [rerender, setRerender] = useState(true);
   const date = new Date();
   useEffect(() => {
     fetch(`http://24.4.98.147:8000/api/trips/`)
       .then(res => res.json())
       .then(data => setTrips(data));
-  }, []);
+  }, [rerender]);
 
+  const triggerRerender = () => {
+    setRerender(!rerender);
+  };
   const upcomingTrips = trips => {
     const currentUpcomingTrips = trips.filter(
       trip =>
         moment(trip.end_date).format("MMDDYYYY") >
         moment(date).format("MMDDYYYY")
     );
-    return <TripList trips={currentUpcomingTrips} />;
+    return (
+      <TripList
+        trips={currentUpcomingTrips}
+        triggerRerender={triggerRerender}
+      />
+    );
   };
 
   return (

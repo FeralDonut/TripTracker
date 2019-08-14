@@ -8,12 +8,16 @@ import TripList from "../components/Trips/TripListContainer";
 
 const SecondPage = () => {
   const [trips, setTrips] = useState([]);
+  const [rerender, setRerender] = useState(true);
+
   useEffect(() => {
     fetch(`http://24.4.98.147:8000/api/trips/`)
       .then(res => res.json())
       .then(data => setTrips(data));
   }, []);
-
+  const triggerRerender = () => {
+    setRerender(!rerender);
+  };
   return (
     <Layout>
       <SEO title="TripTracker" keywords={[`gatsby`, `application`, `react`]} />
@@ -21,7 +25,7 @@ const SecondPage = () => {
         <Jumbotron className={style.jumbo_container}>
           <h2>Here are all your saved trips!</h2>
         </Jumbotron>
-        <TripList trips={trips} />
+        <TripList triggerRerender={triggerRerender} trips={trips} />
       </div>
     </Layout>
   );

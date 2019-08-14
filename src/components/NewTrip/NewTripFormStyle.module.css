@@ -19,3 +19,7 @@
   flex-direction: column;
   width: -webkit-fill-available;
 }
+
+.required {
+  color: red;
+}
