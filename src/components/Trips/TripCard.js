@@ -91,9 +91,9 @@ const TripCard = props => {
         </CardBody>
       </Link>
       <CardFooter>
-        {/* <div className={style.delete_trip} onClick={() => handleDelete(id)}> */}
-        <FontAwesomeIcon icon="trash-alt" onClick={() => handleDelete(id)} />
-        {/* </div> */}
+        <div className={style.delete_trip}>
+          <FontAwesomeIcon icon="trash-alt" onClick={() => handleDelete(id)} />
+        </div>
       </CardFooter>
     </Card>
   );
