@@ -51,7 +51,6 @@ const NewTripForm = ({ newTripSaved, setIndividualTrip }) => {
     e.preventDefault();
     // deleteTodo(id);
   };
-  console.log(form);
   return (
     <Form
       legend="Let's Plan a Trip!"

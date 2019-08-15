@@ -11,7 +11,6 @@ import style from "./styles.module.css";
 const IndividualTrips = ({ trip }) => {
   const [render, setRender] = useState(true);
   const [indiTrip, setIndiTrip] = useState(trip);
-
   const apiCall = () => {
     setRender(!render);
   };
@@ -35,7 +34,7 @@ const IndividualTrips = ({ trip }) => {
       ) : (
         <div>
           <h1>{indiTrip.title}</h1>
-
+          <p>{indiTrip.description}</p>
           <Weather zip={indiTrip.location.zip} location={indiTrip.location} />
           <DashBoard individualTrip={indiTrip} apiCall={apiCall} />
         </div>
