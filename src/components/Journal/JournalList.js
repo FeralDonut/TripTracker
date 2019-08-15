@@ -3,8 +3,6 @@ import JournalEntry from "./JournalEntryContainer";
 import style from "./JournalListStyles.modules.css";
 
 const JournalList = ({ posts, apiCall, tripID }) => {
-  console.log("const tripID = posts._id");
-
   const entries = posts.blog.map(entry => (
     <JournalEntry
       key={entry._id}

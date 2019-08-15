@@ -29,8 +29,6 @@ const TripCard = props => {
   } = props;
 
   const handleDelete = tripID => {
-    console.log("DELETE", tripID);
-    console.log(`http://24.4.98.147:8000/api/trips/${tripID}/`);
     fetch(`http://24.4.98.147:8000/api/trips/${tripID}/`, {
       method: "DELETE"
     }).then(response =>

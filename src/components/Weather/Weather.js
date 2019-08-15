@@ -27,7 +27,6 @@ const WeatherAPI = ({ zip, location }) => {
   }, []);
 
   const updateForecastDegree = event => {
-    console.log(event.target.value);
     setDegreeType(event.target.value);
   };
   return (

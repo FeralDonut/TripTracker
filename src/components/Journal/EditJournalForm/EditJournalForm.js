@@ -40,7 +40,6 @@ const EditJournalForm = props => {
 
   const handleDelete = e => {
     e.preventDefault();
-    console.log("EDITJOURNALHANDLEDELETE");
 
     fetch(`http://24.4.98.147:8000/api/trips/${tripID}/posts/${blogID}`, {
       method: "delete"

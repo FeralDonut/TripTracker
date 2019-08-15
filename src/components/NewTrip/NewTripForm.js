@@ -32,7 +32,6 @@ const NewTripForm = ({ newTripSaved, setIndividualTrip }) => {
   };
 
   const createSave = e => {
-    console.log(JSON.stringify(form));
     e.preventDefault();
     fetch(`http://24.4.98.147:8000/api/trips/`, {
       method: "POST",
