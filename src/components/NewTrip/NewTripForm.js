@@ -56,7 +56,9 @@ const NewTripForm = ({ newTripSaved, setIndividualTrip }) => {
       legend="Let's Plan a Trip!"
       handleSave={createSave}
       handleDelete={handleDelete}
-      disabled={!form.title}
+      disabled={
+        !form.title || !location.city || !location.country || !location.zip
+      }
     >
       <div>
         Name your trip
