@@ -22,12 +22,11 @@ const WeatherAPI = ({ zip, location }) => {
         setFullData(data.list);
         setDailyData(dailyData);
       })
-      .catch(err => console.log(err))
+      .catch(err => err)
       .then(setNoWeather(!noWeather));
   }, []);
 
   const updateForecastDegree = event => {
-    console.log(event.target.value);
     setDegreeType(event.target.value);
   };
   return (

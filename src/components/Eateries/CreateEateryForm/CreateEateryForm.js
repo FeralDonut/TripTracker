@@ -29,7 +29,6 @@ const CreateEateryForm = props => {
       })
     })
       .then(res => res.json())
-      .then(data => console.log("POST RESPONSE", data))
       .then(apiCall)
       .then(publishEatery(id, description));
   };

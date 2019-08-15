@@ -35,7 +35,6 @@ const CreateEntryForm = props => {
       })
     })
       .then(res => res.json())
-      .then(data => console.log("POST RESPONSE", data))
       .then(apiCall);
     //{
     // const dailyData = data.list.filter(reading =>

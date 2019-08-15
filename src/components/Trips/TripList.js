@@ -27,14 +27,7 @@ const TripList = ({ trips, setIndividualTrip, triggerRerender }) => {
       {trips.length === 0 ? (
         <div>Currently No Trips</div>
       ) : (
-        <div>
-          {/* <Link
-            to="/individualTrip"
-            style={{ textDecoration: "none", color: "black" }}
-          > */}
-          {myTrips}
-          {/* </Link> */}
-        </div>
+        <div>{myTrips}</div>
       )}
     </div>
   );

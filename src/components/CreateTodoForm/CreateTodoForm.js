@@ -29,7 +29,6 @@ const CreateTodoForm = props => {
       })
     })
       .then(res => res.json())
-      .then(data => console.log("POST RESPONSE", data))
       .then(apiCall)
       .then(publishTodo(id, description));
   };

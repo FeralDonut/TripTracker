@@ -20,7 +20,6 @@ const TodoList = ({ todos, tripID, deleteTodo, apiCall }) => {
       })
     })
       .then(res => res.json())
-      .then(data => console.log("POST RESPONSE", data))
       .then(apiCall);
   };
 

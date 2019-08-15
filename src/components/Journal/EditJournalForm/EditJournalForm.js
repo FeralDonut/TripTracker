@@ -29,27 +29,18 @@ const EditJournalForm = props => {
         body: description
       })
     })
-      .then(response =>
-        response.json().then(json => {
-          console.log(json);
-        })
-      )
+      .then(response => response.json())
       .then(apiCall)
       .then(deselectEntry);
   };
 
   const handleDelete = e => {
     e.preventDefault();
-    console.log("EDITJOURNALHANDLEDELETE");
 
     fetch(`http://24.4.98.147:8000/api/trips/${tripID}/posts/${blogID}`, {
       method: "delete"
     })
-      .then(response =>
-        response.json().then(json => {
-          console.log(json);
-        })
-      )
+      .then(response => response.json())
       .then(apiCall)
       .then(deselectEntry);
   };

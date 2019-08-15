@@ -11,7 +11,6 @@ import JournalList from "../Journal/JournalListContainer";
 
 const Dashboard = props => {
   const { individualTrip, activeTab, setActiveTab, apiCall } = props;
-  console.log("DAHBOARD", individualTrip);
   const tripID = individualTrip._id;
 
   const tabPicker = event => {
@@ -76,8 +75,6 @@ const Dashboard = props => {
           <CreatePackingList tripID={tripID} apiCall={apiCall} />
         </TabPane>
       </TabContent>
-      {/* </div> */}
-      {/* )} */}
     </div>
   );
 };
