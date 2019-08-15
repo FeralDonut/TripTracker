@@ -8,7 +8,7 @@ const WeatherAPI = ({ zip, location }) => {
   const [fullData, setFullData] = useState([]);
   const [dailyData, setDailyData] = useState([]);
   const [degreeType, setDegreeType] = useState("fahrenheit");
-  const [noWeather, setNoWeather] = useState(false);
+  const [noWeather, setNoWeather] = useState(true);
 
   useEffect(() => {
     const weatherURL = `http://api.openweathermap.org/data/2.5/forecast?zip=${zip}&units=imperial&APPID=${API_KEY}`;
@@ -22,8 +22,7 @@ const WeatherAPI = ({ zip, location }) => {
         setFullData(data.list);
         setDailyData(dailyData);
       })
-      .catch(err => err)
-      .then(setNoWeather(!noWeather));
+      .catch(err => setNoWeather(!noWeather));
   }, []);
 
   const updateForecastDegree = event => {
@@ -31,7 +30,7 @@ const WeatherAPI = ({ zip, location }) => {
   };
   return (
     <>
-      {noWeather ? null : (
+      {!noWeather ? null : (
         <>
           <h6>
             5 Day weather forecast for {location.city}, {location.state}{" "}
