@@ -127,7 +127,6 @@ const NewTripForm = ({ newTripSaved, setIndividualTrip }) => {
             onChange={e => handleLocationChange(e)}
           />
         </div>
-        {/* </div> */}
         <div className={style.locationinput}>
           <div>
             Country

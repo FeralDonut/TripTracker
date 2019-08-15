@@ -75,8 +75,6 @@ const Dashboard = props => {
           <CreatePackingList tripID={tripID} apiCall={apiCall} />
         </TabPane>
       </TabContent>
-      {/* </div> */}
-      {/* )} */}
     </div>
   );
 };
