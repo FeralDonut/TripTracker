@@ -60,7 +60,8 @@ const TripCard = props => {
           <CardText className={style.location_container}>
             <span className={style.location}>
               <label className={style.fontWeight}>
-                {locations ? locations.city : null}
+                {locations.city ? locations.city : "---"}
+                {locations.region ? ", ".concat(locations.region) : null}
               </label>
               {"City"}
             </span>
@@ -75,8 +76,7 @@ const TripCard = props => {
             <span className={style.date_container}>
               <span className={style.location}>
                 <label className={style.fontWeight}>
-                  {locations ? locations.region : "---"},{" "}
-                  {locations ? locations.country : "---"}
+                  {locations.country ? locations.country : null}
                 </label>
                 {"Country"}
               </span>

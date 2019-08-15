@@ -32,7 +32,6 @@ const CreatePackingListForm = props => {
       })
     })
       .then(res => res.json())
-      .then(data => console.log("POST RESPONSE", data))
       .then(apiCall)
       .then(publishPackingList(id, count, description));
     // })
