@@ -23,7 +23,6 @@ const NewTripForm = ({ newTripSaved, setIndividualTrip }) => {
   const handleLocationChange = e => {
     const { name, value } = e.target;
     setLocation({ ...location, [name]: value });
-    setForm({ ...form, ["location"]: location });
   };
 
   const handleChange = e => {
@@ -33,6 +32,7 @@ const NewTripForm = ({ newTripSaved, setIndividualTrip }) => {
 
   const createSave = e => {
     e.preventDefault();
+    setForm({ ...form, ["location"]: location });
     fetch(`http://24.4.98.147:8000/api/trips/`, {
       method: "POST",
       headers: {
@@ -51,6 +51,7 @@ const NewTripForm = ({ newTripSaved, setIndividualTrip }) => {
     e.preventDefault();
     // deleteTodo(id);
   };
+  console.log(form);
   return (
     <Form
       legend="Let's Plan a Trip!"
@@ -152,6 +153,7 @@ const NewTripForm = ({ newTripSaved, setIndividualTrip }) => {
           <Input
             name="zip"
             type="text"
+            value={location.zip}
             placeholder="Zip/Postal"
             id="zip"
             onChange={e => handleLocationChange(e)}
